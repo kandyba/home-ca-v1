@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HOME.CA - Your Home Management Platform</title>
+    <script type="module" crossorigin src="/assets/main-Lpt8zbnS.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-B3DDkF1V.css">
+  </head>
+  <body class="bg-white">
+    <div x-data="{ 
+      mobileMenuOpen: false, 
+      knowYourHomeMenu: false, 
+      manageFinancesMenu: false, 
+      isNavFixed: false,
+      lastScrollPosition: 0,
+      isAtBottom: false,
+      headerHeight: 0,
+      navOffset: 0
+    }" 
+    x-init="
+      headerHeight = $refs.header.offsetHeight;
+      navOffset = $refs.nav.offsetTop;
+      
+      window.addEventListener('scroll', () => {
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        isAtBottom = (scrollTop + windowHeight) >= documentHeight;
+        isNavFixed = !isAtBottom && scrollTop > (navOffset - headerHeight);
+      });
+    ">
+      <!-- Header/Navigation -->
+      <header x-ref="header" class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
+        <div class="container mx-auto">
+          <div class="flex items-center justify-between h-16 px-4">
+            <!-- Logo -->
+            <div class="flex items-center space-x-4">
+              <a href="#" class="flex items-center">
+                <h1 class="text-2xl font-bold"><span class="text-primary">HOME</span><span class="text-darkText">.CA</span></h1>
+              </a>
+              
+              <!-- Search bar - desktop -->
+              <div class="hidden md:flex items-center">
+                <div class="relative w-[200px]">
+                  <input 
+                    type="text" 
+                    value="402 Spring Gate Blvd." 
+                    class="block w-full pr-10 py-2 bg-transparent text-[14px] font-semibold tracking-[-0.42px] text-darkText placeholder-lightText focus:outline-none border-none" 
+                    placeholder="Search address..."
+                  >
+                  <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                    <svg class="h-5 w-5 text-lightText" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Right navigation -->
+            <div class="flex items-center space-x-4">
+              <button class="relative text-gray-500 hover:text-gray-700">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                </svg>
+                <span class="absolute top-0 right-0 bg-primary text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">2</span>
+              </button>
+              
+              <button class="relative text-gray-500 hover:text-gray-700">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <span class="absolute top-0 right-0 bg-primary text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">0</span>
+              </button>
+              
+              <div class="relative w-8 h-8">
+                <div class="absolute inset-[2px] rounded-full overflow-hidden bg-gray-200">
+                  <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Profile" class="h-full w-full object-cover">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Map Section -->
+      <div class="relative h-[200px] bg-gray-100 mt-16">
+        <img src="https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="Map" class="w-full h-full object-cover">
+        
+        <!-- Property Pin -->
+        <div x-data="{ showPopup: false }" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <button @click="showPopup = !showPopup" class="w-8 h-8 bg-primary rounded-full flex items-center justify-center shadow-lg hover:bg-primary/90 transition-colors">
+            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20fill='none'%20viewBox='0%200%2024%2024'%20stroke='currentColor'%3e%3cpath%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20d='M3%2012l2-2m0%200l7-7%207%207m-14%200l2%202m0%200l7%207%207-7m-14%200l2-2'%20/%3e%3c/svg%3e" alt="Home" class="w-4 h-4 brightness-0 invert">
+          </button>
+          
+          <!-- Property Popup -->
+          <div x-show="showPopup" @click.away="showPopup = false" class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-[300px] bg-white rounded-lg shadow-lg p-4" x-cloak>
+            <div class="flex justify-between items-start mb-3">
+              <div>
+                <div class="text-primary font-semibold text-lg">For Sale</div>
+                <div class="text-2xl font-bold text-darkText">$2.3m</div>
+              </div>
+              <button @click="showPopup = false" class="text-gray-400 hover:text-gray-600">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div class="text-sm text-gray-600 mb-2">402 Spring Gate Blvd.</div>
+            <div class="text-sm text-gray-600">Thornhill, ON L4J4K6</div>
+            <button class="mt-3 w-full bg-primary text-white py-2 rounded-md hover:bg-primary/90 transition-colors">
+              Get pre-qualified
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main navigation -->
+      <nav x-ref="nav" 
+           class="bg-white border-b border-gray-200 transition-all duration-300" 
+           :class="{ 'fixed top-16 left-0 right-0 z-40 shadow-sm': isNavFixed && !isAtBottom, 'relative': !isNavFixed || isAtBottom }">
+        <div class="container mx-auto px-4">
+          <div class="flex items-center space-x-8 py-4 overflow-x-auto hide-scrollbar">
+            <a href="#" class="flex items-center space-x-3 whitespace-nowrap group">
+              <div class="w-12 h-12 rounded-[80px] border border-[#E8E8E8] bg-primary group-hover:bg-primary flex items-center justify-center">
+                <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20fill='none'%20viewBox='0%200%2024%2024'%20stroke='currentColor'%3e%3cpath%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20d='M3%2012l2-2m0%200l7-7%207%207m-14%200l2%202m0%200l7%207%207-7m-14%200l2-2'%20/%3e%3c/svg%3e" alt="Home" class="h-6 w-6 brightness-0 invert">
+              </div>
+              <span class="text-[14px] font-semibold tracking-[-0.42px] text-darkText">Home Dashboard</span>
+            </a>
+            
+            <a href="#" class="flex items-center space-x-3 whitespace-nowrap group">
+              <div class="w-12 h-12 rounded-[80px] border border-[#E8E8E8] bg-white group-hover:bg-primary flex items-center justify-center">
+                <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20fill='none'%20viewBox='0%200%2024%2024'%20stroke='currentColor'%3e%3cpath%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20d='M3%2012l2-2m0%200l7-7%207%207m-14%200l2%202m0%200l7%207%207-7m-14%200l2-2'%20/%3e%3c/svg%3e" alt="Home" class="h-6 w-6 group-hover:brightness-0 group-hover:invert">
+              </div>
+              <span class="text-[14px] font-semibold tracking-[-0.42px] text-darkText">Know Your Home</span>
+            </a>
+
+            <a href="#" class="flex items-center space-x-3 whitespace-nowrap group">
+              <div class="w-12 h-12 rounded-[80px] border border-[#E8E8E8] bg-white group-hover:bg-primary flex items-center justify-center">
+                <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20fill='none'%20viewBox='0%200%2024%2024'%20stroke='currentColor'%3e%3cpath%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20d='M19%2021V5a2%202%200%2000-2-2H7a2%202%200%2000-2%202v16m14%200h2m-2%200h-5m-9%200H3m2%200h5M9%207h1m-1%204h1m4-4h1m-1%204h1m-5%2010v-5a1%201%200%20011-1h2a1%201%200%20011%201v5m-4%200h4'%20/%3e%3c/svg%3e" alt="Neighborhood" class="h-6 w-6 group-hover:brightness-0 group-hover:invert">
+              </div>
+              <span class="text-[14px] font-semibold tracking-[-0.42px] text-darkText">Discover Your Neighborhood</span>
+            </a>
+
+            <a href="#" class="flex items-center space-x-3 whitespace-nowrap group">
+              <div class="w-12 h-12 rounded-[80px] border border-[#E8E8E8] bg-white group-hover:bg-primary flex items-center justify-center">
+                <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20fill='none'%20viewBox='0%200%2024%2024'%20stroke='currentColor'%3e%3cpath%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20d='M10.325%204.317c.426-1.756%202.924-1.756%203.35%200a1.724%201.724%200%20002.573%201.066c1.543-.94%203.31.826%202.37%202.37a1.724%201.724%200%20001.065%202.572c1.756.426%201.756%202.924%200%203.35a1.724%201.724%200%2000-1.066%202.573c.94%201.543-.826%203.31-2.37%202.37a1.724%201.724%200%2000-2.572%201.065c-.426%201.756-2.924%201.756-3.35%200a1.724%201.724%200%2000-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724%201.724%200%2000-1.065-2.572c-1.756-.426-1.756-2.924%200-3.35a1.724%201.724%200%20001.066-2.573c-.94-1.543.826-3.31%202.37-2.37.996.608%202.296.07%202.572-1.065z'%20/%3e%3cpath%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20d='M15%2012a3%203%200%2011-6%200%203%203%200%20016%200z'%20/%3e%3c/svg%3e" alt="Tools" class="h-6 w-6 group-hover:brightness-0 group-hover:invert">
+              </div>
+              <span class="text-[14px] font-semibold tracking-[-0.42px] text-darkText">Maintenance & Upkeep</span>
+            </a>
+
+            <a href="#" class="flex items-center space-x-3 whitespace-nowrap group">
+              <div class="w-12 h-12 rounded-[80px] border border-[#E8E8E8] bg-white group-hover:bg-primary flex items-center justify-center">
+                <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20fill='none'%20viewBox='0%200%2024%2024'%20stroke='currentColor'%3e%3cpath%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20d='M12%208c-1.657%200-3%20.895-3%202s1.343%202%203%202%203%20.895%203%202-1.343%202-3%202m0-8c1.11%200%202.08.402%202.599%201M12%208V7m0%201v8m0%200v1m0-1c-1.11%200-2.08-.402-2.599-1M21%2012a9%209%200%2011-18%200%209%209%200%200118%200z'%20/%3e%3c/svg%3e" alt="Dollar" class="h-6 w-6 group-hover:brightness-0 group-hover:invert">
+              </div>
+              <span class="text-[14px] font-semibold tracking-[-0.42px] text-darkText">Manage Finances</span>
+            </a>
+
+            <a href="#" class="flex items-center space-x-3 whitespace-nowrap group">
+              <div class="w-12 h-12 rounded-[80px] border border-[#E8E8E8] bg-white group-hover:bg-primary flex items-center justify-center">
+                <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20fill='none'%20viewBox='0%200%2024%2024'%20stroke='currentColor'%3e%3cpath%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20d='M12%209v2m0%204h.01m-6.938%204h13.856c1.54%200%202.502-1.667%201.732-3L13.732%204c-.77-1.333-2.694-1.333-3.464%200L3.34%2016c-.77%201.333.192%203%201.732%203z'%20/%3e%3c/svg%3e" alt="Warning" class="h-6 w-6 group-hover:brightness-0 group-hover:invert">
+              </div>
+              <span class="text-[14px] font-semibold tracking-[-0.42px] text-darkText">Plan for Emergencies</span>
+            </a>
+
+            <a href="#" class="flex items-center space-x-3 whitespace-nowrap group">
+              <div class="w-12 h-12 rounded-[80px] border border-[#E8E8E8] bg-white group-hover:bg-primary flex items-center justify-center">
+                <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20fill='none'%20viewBox='0%200%2024%2024'%20stroke='currentColor'%3e%3cpath%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20d='M9.663%2017h4.673M12%203v1m6.364%201.636l-.707.707M21%2012h-1M4%2012H3m3.343-5.657l-.707-.707m2.828%209.9a5%205%200%20117.072%200l-.548.547A3.374%203.374%200%200014%2018.469V19a2%202%200%2011-4%200v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z'%20/%3e%3c/svg%3e" alt="Lightbulb" class="h-6 w-6 group-hover:brightness-0 group-hover:invert">
+              </div>
+              <span class="text-[14px] font-semibold tracking-[-0.42px] text-darkText">Improvements Ideas</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="container mx-auto px-4 py-6" :class="{ 'mt-[88px]': isNavFixed && !isAtBottom }">
+        <!-- Example of ReadMore component usage -->
+        <div x-data="readMore(150)" class="mb-6">
+          <p x-text="displayText"></p>
+          <button 
+            x-show="showButton" 
+            @click="toggle()" 
+            class="text-primary hover:underline text-sm mt-2"
+            x-text="isExpanded ? 'Read less' : 'Read more'"
+          ></button>
+        </div>
+
+        <!-- Know Your Home section -->
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-[32px] font-semibold tracking-[-0.96px] text-darkText">Know Your Home</h2>
+          <div class="relative">
+            <button 
+              @click="knowYourHomeMenu = !knowYourHomeMenu; manageFinancesMenu = false"
+              class="p-1 rounded-full hover:bg-gray-100"
+              :class="{ 'bg-gray-100': knowYourHomeMenu }"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+              </svg>
+            </button>
+            <!-- Dropdown menu -->
+            <div
+              x-show="knowYourHomeMenu"
+              @click.away="knowYourHomeMenu = false"
+              class="absolute right-0 mt-2 w-48 bg-white rounded-[8px] border border-[#E8E8E8] shadow-[0px_8px_16px_0px_rgba(0,0,0,0.08)] z-10"
+              x-cloak
+            >
+              <div class="py-1">
+                <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-white group">
+                  <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20fill='none'%20viewBox='0%200%2024%2024'%20stroke='currentColor'%3e%3cpath%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20d='M3%2012l2-2m0%200l7-7%207%207m-14%200l2%202m0%200l7%207%207-7m-14%200l2-2'%20/%3e%3c/svg%3e" alt="Add" class="h-4 w-4 mr-2 group-hover:brightness-0 group-hover:invert">
+                  <span>Add info</span>
+                </a>
+                <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-white group">
+                  <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20fill='none'%20viewBox='0%200%2024%2024'%20stroke='currentColor'%3e%3cpath%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20d='M10.325%204.317c.426-1.756%202.924-1.756%203.35%200a1.724%201.724%200%20002.573%201.066c1.543-.94%203.31.826%202.37%202.37a1.724%201.724%200%20001.065%202.572c1.756.426%201.756%202.924%200%203.35a1.724%201.724%200%2000-1.066%202.573c.94%201.543-.826%203.31-2.37%202.37a1.724%201.724%200%2000-2.572%201.065c-.426%201.756-2.924%201.756-3.35%200a1.724%201.724%200%2000-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724%201.724%200%2000-1.065-2.572c-1.756-.426-1.756-2.924%200-3.35a1.724%201.724%200%20001.066-2.573c-.94-1.543.826-3.31%202.37-2.37.996.608%202.296.07%202.572-1.065z'%20/%3e%3cpath%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20d='M15%2012a3%203%200%2011-6%200%203%203%200%20016%200z'%20/%3e%3c/svg%3e" alt="Edit" class="h-4 w-4 mr-2 group-hover:brightness-0 group-hover:invert">
+                  <span>Edit</span>
+                </a>
+                <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-white group">
+                  <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20fill='none'%20viewBox='0%200%2024%2024'%20stroke='currentColor'%3e%3cpath%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20d='M21%2021l-6-6m2-5a7%207%200%2011-14%200%207%207%200%200114%200z'%20/%3e%3c/svg%3e" alt="View" class="h-4 w-4 mr-2 group-hover:brightness-0 group-hover:invert">
+                  <span>View Details</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          <div class="border border-[#E8E8E8] rounded-[6px] p-4 hover:bg-primary hover:text-white group transition-colors cursor-pointer">
+            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20fill='none'%20viewBox='0%200%2024%2024'%20stroke='currentColor'%3e%3cpath%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20d='M3%2012l2-2m0%200l7-7%207%207m-14%200l2%202m0%200l7%207%207-7m-14%200l2-2'%20/%3e%3c/svg%3e" alt="Home" class="h-6 w-6 mb-2 group-hover:brightness-0 group-hover:invert">
+            <div class="text-[42px] font-semibold tracking-[-1.26px] text-darkText group-hover:text-white mb-1">45</div>
+            <div class="text-[18px] font-medium text-lightText group-hover:text-white">Key Facts</div>
+          </div>
+          
+          <div class="border border-[#E8E8E8] rounded-[6px] p-4 hover:bg-primary hover:text-white group transition-colors cursor-pointer">
+            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20fill='none'%20viewBox='0%200%2024%2024'%20stroke='currentColor'%3e%3cpath%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20d='M10.325%204.317c.426-1.756%202.924-1.756%203.35%200a1.724%201.724%200%20002.573%201.066c1.543-.94%203.31.826%202.37%202.37a1.724%201.724%200%20001.065%202.572c1.756.426%201.756%202.924%200%203.35a1.724%201.724%200%2000-1.066%202.573c.94%201.543-.826%203.31-2.37%202.37a1.724%201.724%200%2000-2.572%201.065c-.426%201.756-2.924%201.756-3.35%200a1.724%201.724%200%2000-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724%201.724%200%2000-1.065-2.572c-1.756-.426-1.756-2.924%200-3.35a1.724%201.724%200%20001.066-2.573c-.94-1.543.826-3.31%202.37-2.37.996.608%202.296.07%202.572-1.065z'%20/%3e%3cpath%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20d='M15%2012a3%203%200%2011-6%200%203%203%200%20016%200z'%20/%3e%3c/svg%3e" alt="Tools" class="h-6 w-6 mb-2 group-hover:brightness-0 group-hover:invert">
+            <div class="text-[42px] font-semibold tracking-[-1.26px] text-darkText group-hover:text-white mb-1">5</div>
+            <div class="text-[18px] font-medium text-lightText group-hover:text-white">Rooms</div>
+          </div>
+          
+          <div class="border border-[#E8E8E8] rounded-[6px] p-4 hover:bg-primary hover:text-white group transition-colors cursor-pointer">
+            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20fill='none'%20viewBox='0%200%2024%2024'%20stroke='currentColor'%3e%3cpath%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20d='M12%208c-1.657%200-3%20.895-3%202s1.343%202%203%202%203%20.895%203%202-1.343%202-3%202m0-8c1.11%200%202.08.402%202.599%201M12%208V7m0%201v8m0%200v1m0-1c-1.11%200-2.08-.402-2.599-1M21%2012a9%209%200%2011-18%200%209%209%200%200118%200z'%20/%3e%3c/svg%3e" alt="Dollar" class="h-6 w-6 mb-2 group-hover:brightness-0 group-hover:invert">
+            <div class="text-[42px] font-semibold tracking-[-1.26px] text-darkText group-hover:text-white mb-1">$2.35m</div>
+            <div class="text-[18px] font-medium text-lightText group-hover:text-white">Estimated Value</div>
+          </div>
+          
+          <div class="border border-[#E8E8E8] rounded-[6px] p-4 hover:bg-primary hover:text-white group transition-colors cursor-pointer">
+            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20fill='none'%20viewBox='0%200%2024%2024'%20stroke='currentColor'%3e%3cpath%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20d='M21%2021l-6-6m2-5a7%207%200%2011-14%200%207%207%200%200114%200z'%20/%3e%3c/svg%3e" alt="Search" class="h-6 w-6 mb-2 group-hover:brightness-0 group-hover:invert">
+            <div class="text-[42px] font-semibold tracking-[-1.26px] text-darkText group-hover:text-white mb-1">3</div>
+            <div class="text-[18px] font-medium text-lightText group-hover:text-white">Comparables</div>
+          </div>
+
+          <div class="border border-[#E8E8E8] rounded-[6px] p-4 hover:bg-primary hover:text-white group transition-colors cursor-pointer">
+            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20fill='none'%20viewBox='0%200%2024%2024'%20stroke='currentColor'%3e%3cpath%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20d='M10.325%204.317c.426-1.756%202.924-1.756%203.35%200a1.724%201.724%200%20002.573%201.066c1.543-.94%203.31.826%202.37%202.37a1.724%201.724%200%20001.065%202.572c1.756.426%201.756%202.924%200%203.35a1.724%201.724%200%2000-1.066%202.573c.94%201.543-.826%203.31-2.37%202.37a1.724%201.724%200%2000-2.572%201.065c-.426%201.756-2.924%201.756-3.35%200a1.724%201.724%200%2000-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724%201.724%200%2000-1.065-2.572c-1.756-.426-1.756-2.924%200-3.35a1.724%201.724%200%20001.066-2.573c-.94-1.543.826-3.31%202.37-2.37.996.608%202.296.07%202.572-1.065z'%20/%3e%3cpath%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20d='M15%2012a3%203%200%2011-6%200%203%203%200%20016%200z'%20/%3e%3c/svg%3e" alt="Tools" class="h-6 w-6 mb-2 group-hover:brightness-0 group-hover:invert">
+            <div class="text-[42px] font-semibold tracking-[-1.26px] text-darkText group-hover:text-white mb-1">7</div>
+            <div class="text-[18px] font-medium text-lightText group-hover:text-white">Renovation History</div>
+          </div>
+
+          <div class="border border-[#E8E8E8] rounded-[6px] p-4 hover:bg-primary hover:text-white group transition-colors cursor-pointer">
+            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20fill='none'%20viewBox='0%200%2024%2024'%20stroke='currentColor'%3e%3cpath%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20d='M3%2012l2-2m0%200l7-7%207%207m-14%200l2%202m0%200l7%207%207-7m-14%200l2-2'%20/%3e%3c/svg%3e" alt="Home" class="h-6 w-6 mb-2 group-hover:brightness-0 group-hover:invert">
+            <div class="text-[42px] font-semibold tracking-[-1.26px] text-darkText group-hover:text-white mb-1">2</div>
+            <div class="text-[18px] font-medium text-lightText group-hover:text-white">Zoning & Usage</div>
+          </div>
+
+          <div class="border border-[#E8E8E8] rounded-[6px] p-4 hover:bg-primary hover:text-white group transition-colors cursor-pointer">
+            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20fill='none'%20viewBox='0%200%2024%2024'%20stroke='currentColor'%3e%3cpath%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20d='M12%208c-1.657%200-3%20.895-3%202s1.343%202%203%202%203%20.895%203%202-1.343%202-3%202m0-8c1.11%200%202.08.402%202.599%201M12%208V7m0%201v8m0%200v1m0-1c-1.11%200-2.08-.402-2.599-1M21%2012a9%209%200%2011-18%200%209%209%200%200118%200z'%20/%3e%3c/svg%3e" alt="Dollar" class="h-6 w-6 mb-2 group-hover:brightness-0 group-hover:invert">
+            <div class="text-[42px] font-semibold tracking-[-1.26px] text-darkText group-hover:text-white mb-1">37</div>
+            <div class="text-[18px] font-medium text-lightText group-hover:text-white">Transaction Records</div>
+          </div>
+
+          <div class="border border-[#E8E8E8] rounded-[6px] p-4 hover:bg-primary hover:text-white group transition-colors cursor-pointer">
+            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20fill='none'%20viewBox='0%200%2024%2024'%20stroke='currentColor'%3e%3cpath%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20d='M12%208c-1.657%200-3%20.895-3%202s1.343%202%203%202%203%20.895%203%202-1.343%202-3%202m0-8c1.11%200%202.08.402%202.599%201M12%208V7m0%201v8m0%200v1m0-1c-1.11%200-2.08-.402-2.599-1M21%2012a9%209%200%2011-18%200%209%209%200%200118%200z'%20/%3e%3c/svg%3e" alt="Dollar" class="h-6 w-6 mb-2 group-hover:brightness-0 group-hover:invert">
+            <div class="text-[42px] font-semibold tracking-[-1.26px] text-darkText group-hover:text-white mb-1">$1,475,600</div>
+            <div class="flex items-center gap-2">
+              <div class="text-[18px] font-medium text-lightText group-hover:text-white">Currently</div>
+              <span class="px-2 py-1 text-xs bg-red-100 text-red-600 rounded group-hover:bg-white">For Sale</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Manage Finances section -->
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-[32px] font-semibold tracking-[-0.96px] text-darkText">Manage Finances</h2>
+          <div class="relative">
+            <button 
+              @click="manageFinancesMenu = !manageFinancesMenu; knowYourHomeMenu = false"
+              class="p-1 rounded-full hover:bg-gray-100"
+              :class="{ 'bg-gray-100': manageFinancesMenu }"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+              </svg>
+            </button>
+            <!-- Dropdown menu -->
+            <div
+              x-show="manageFinancesMenu"
+              @click.away="manageFinancesMenu = false"
+              class="absolute right-0 mt-2 w-48 bg-white rounded-[8px] border border-[#E8E8E8] shadow-[0px_8px_16px_0px_rgba(0,0,0,0.08)] z-10"
+              x-cloak
+            >
+              <div class="py-1">
+                <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-white group">
+                  <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20fill='none'%20viewBox='0%200%2024%2024'%20stroke='currentColor'%3e%3cpath%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20d='M3%2012l2-2m0%200l7-7%207%207m-14%200l2%202m0%200l7%207%207-7m-14%200l2-2'%20/%3e%3c/svg%3e" alt="Add" class="h-4 w-4 mr-2 group-hover:brightness-0 group-hover:invert">
+                  <span>Add info</span>
+                </a>
+                <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-white group">
+                  <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20fill='none'%20viewBox='0%200%2024%2024'%20stroke='currentColor'%3e%3cpath%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20d='M10.325%204.317c.426-1.756%202.924-1.756%203.35%200a1.724%201.724%200%20002.573%201.066c1.543-.94%203.31.826%202.37%202.37a1.724%201.724%200%20001.065%202.572c1.756.426%201.756%202.924%200%203.35a1.724%201.724%200%2000-1.066%202.573c.94%201.543-.826%203.31-2.37%202.37a1.724%201.724%200%2000-2.572%201.065c-.426%201.756-2.924%201.756-3.35%200a1.724%201.724%200%2000-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724%201.724%200%2000-1.065-2.572c-1.756-.426-1.756-2.924%200-3.35a1.724%201.724%200%20001.066-2.573c-.94-1.543.826-3.31%202.37-2.37.996.608%202.296.07%202.572-1.065z'%20/%3e%3cpath%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20d='M15%2012a3%203%200%2011-6%200%203%203%200%20016%200z'%20/%3e%3c/svg%3e" alt="Edit" class="h-4 w-4 mr-2 group-hover:brightness-0 group-hover:invert">
+                  <span>Edit</span>
+                </a>
+                <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-white group">
+                  <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20fill='none'%20viewBox='0%200%2024%2024'%20stroke='currentColor'%3e%3cpath%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20d='M21%2021l-6-6m2-5a7%207%200%2011-14%200%207%207%200%200114%200z'%20/%3e%3c/svg%3e" alt="View" class="h-4 w-4 mr-2 group-hover:brightness-0 group-hover:invert">
+                  <span>View Details</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Monthly Expenses Chart -->
+        <div class="bg-white rounded-lg border border-[#E8E8E8] p-6">
+          <h3 class="text-xl font-semibold mb-6">Your Total Monthly Costs</h3>
+          <div class="flex flex-col md:flex-row items-start gap-8">
+            <div class="w-[300px] h-[300px] relative">
+              <canvas id="monthlyExpensesChart"></canvas>
+            </div>
+            
+            <div class="flex-1">
+              <div class="bg-[#F9F9F9] rounded-t-lg">
+                <div class="grid grid-cols-2 px-4 py-3">
+                  <div class="text-[#949494] font-medium">Type</div>
+                  <div class="text-[#949494] font-medium">Costs</div>
+                </div>
+              </div>
+              <div class="divide-y">
+                <div class="grid grid-cols-2 px-4 py-4">
+                  <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 rounded-full bg-[#FF603F]"></div>
+                    <span>Mortgage</span>
+                  </div>
+                  <div>$3,500</div>
+                </div>
+                <div class="grid grid-cols-2 px-4 py-4">
+                  <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 rounded-full bg-[#FF8F75]"></div>
+                    <span>Insurance</span>
+                  </div>
+                  <div>$520</div>
+                </div>
+                <div class="grid grid-cols-2 px-4 py-4">
+                  <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 rounded-full bg-[#8B2E14]"></div>
+                    <span>Property Taxes</span>
+                  </div>
+                  <div>$1000</div>
+                </div>
+                <div class="grid grid-cols-2 px-4 py-4">
+                  <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 rounded-full bg-[#FFBFAF]"></div>
+                    <span>Maintenance Fees</span>
+                  </div>
+                  <div>$450</div>
+                </div>
+              </div>
+              <div class="text-center mt-4">
+                <a href="#" class="text-primary hover:underline">See more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    
+  </body>
+</html>

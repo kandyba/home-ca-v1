@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Albert Sans', sans-serif;
+    @apply bg-white text-darkText leading-normal;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-medium text-darkText;
+  }
+  
+  h1 {
+    @apply text-3xl md:text-4xl;
+  }
+  
+  h2 {
+    @apply text-2xl md:text-3xl;
+  }
+  
+  h3 {
+    @apply text-xl md:text-2xl;
+  }
+}
+
+@layer components {
+  .stat-card {
+    @apply bg-white rounded-lg p-5 shadow-md transition-all duration-200 hover:shadow-lg;
+  }
+  
+  .icon {
+    @apply text-lightText;
+  }
+  
+  .btn-primary {
+    @apply inline-flex justify-center bg-primary text-white font-semibold rounded leading-normal transition duration-300 cursor-pointer hover:bg-orange4 active:bg-orange2;
+  }
+
+  .btn-primary.small {
+    @apply py-1 px-4.5 text-xs;
+  }
+  .btn-primary.medium {
+    @apply py-2 px-4.5 text-sm;
+  }
+  .btn-primary.big {
+    @apply py-3.5 px-4.5 text-base;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-white px-4 py-2 rounded-md hover:bg-opacity-90 transition-all;
+  }
+  
+  .btn-outline {
+    @apply border border-primary text-primary px-4 py-2 rounded-md hover:bg-primary hover:text-white transition-all;
+  }
+
+  .scroll-nav-container {
+    @apply flex items-center
+    lg:mx-[calc((100vw_-_992px)_/_2_*_-1)] xl:mx-[calc((100vw_-_1248px)_/_2_*_-1)]
+    px-2.5 md:px-5 lg:px-0 lg:pl-4 lg:pt-6 lg:pb-5.5
+    lg:px-[calc((100vw_-_992px)_/_2)] xl:px-[calc((100vw_-_1248px)_/_2)] overflow-x-auto hide-scrollbar;
+  }
+  
+  .nav-link {
+    @apply flex items-center p-2.5 gap-x-2 whitespace-nowrap;
+  }
+
+  .nav-link__icon {
+    @apply w-8 h-8 flex items-center justify-center border rounded-full border-bgGray2 bg-white text-primary duration-200;
+  }
+
+  .nav-link__icon svg {
+    @apply duration-200;
+  }
+  
+  .nav-link.active .nav-link__icon,
+  .nav-link:hover .nav-link__icon {
+    @apply bg-primary text-white border-primary;
+  }
+
+  .breadcrumbs {
+    @apply lg:gap-x-1 lg:text-xs;
+  }
+
+  .breadcrumbs a {
+    @apply flex gap-x-1 items-center after:w-3.5 after:h-3.5 after:bg-[url('src/assets/icons/breadcrums-divider.svg')] after:bg-no-repeat;
+  }
+
+  .breadcrumbs span {
+    @apply text-lightText;
+  }
+
+  .swiper-slide {
+    @apply h-auto;
+  }
+
+  .manage-finances .swiper-slide {
+    @apply lg:w-[40rem];
+  }
+
+  .manage-finances-button {
+    @apply w-8 h-8 rounded-full border border-greyscaleGray2 cursor-pointer bg-no-repeat bg-center;
+  }
+
+  .manage-finances-next {
+    @apply bg-[url('src/assets/icons/arrow-prev.svg')];
+  }
+
+  .manage-finances-prev {
+    @apply bg-[url('src/assets/icons/arrow-next.svg')];
+  }
+
+}
+
+[x-cloak] {
+  display: none !important;
+}
+
+.swiper-button-disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+.swiper-pagination-bullet {
+  @apply mx-0 w-1.5 h-1.5 bg-bgGray2 opacity-100 transition duration-300;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  @apply bg-primary;
+}
+
+.swiper.manage-finances {
+  @apply lg:mx-[calc((100vw_-_992px)_/_2_*_-1)] xl:mx-[calc((100vw_-_1248px)_/_2_*_-1)] lg:px-[calc((100vw_-_992px)_/_2)] xl:px-[calc((100vw_-_1248px)_/_2)];
+}

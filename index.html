@@ -1,0 +1,1052 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>HOME.CA - Your Home Management Platform</title>
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="HOME.CA - Your Home Management Platform" />
+    <meta name="description" content="Easily manage your home tasks, schedules, and maintenance with HOME.CA - the ultimate home management platform." />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.home.ca/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.home.ca/" />
+    <meta property="og:title" content="HOME.CA - Your Home Management Platform" />
+    <meta property="og:description" content="Easily manage your home tasks, schedules, and maintenance with HOME.CA." />
+    <meta property="og:image" content="src/assets/icons/logo-small.svg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://www.home.ca/" />
+    <meta property="twitter:title" content="HOME.CA - Your Home Management Platform" />
+    <meta property="twitter:description" content="Easily manage your home tasks, schedules, and maintenance with HOME.CA." />
+    <meta property="twitter:image" content="src/assets/icons/logo-small.svg" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="src/assets/favicon/favicon.ico" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- Metadata placeholders for backend injection -->
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="{{AUTHOR_NAME}}" />
+    <meta name="keywords" content="{{KEYWORDS}}" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Accessibility -->
+    <meta name="application-name" content="HOME.CA" />
+  </head>
+  <body class="pt-[3.25rem] bg-white">
+    <div x-data="navigation">
+      <!-- Header/Navigation -->
+      <header x-ref="header" class="fixed top-0 left-0 right-0 py-2 bg-white shadow-sm z-50" role="banner">
+        <div class="container mx-auto">
+          <div class="flex items-center justify-between" aria-label="Main site header">
+            <div class="flex gap-x-2 md:gap-x-5 items-center">
+              <!-- Logo -->
+              <a href="/" class="flex w-9 md:w-[6.875rem] items-center" aria-label="Home.ca homepage">
+                <span class="sr-only">Home.ca</span>
+                <picture>
+                  <source srcset="src/assets/icons/logo-full.svg" media="(min-width: 768px)" />
+                  <img src="src/assets/icons/logo-small.svg" alt="Home.ca logo" />
+                </picture>
+              </a>
+              <!-- Logo -->
+              <!-- Search bar - desktop -->
+              <form role="search" class="flex items-center" aria-label="Search form">
+                <div class="relative w-[9rem] md:w-[10.3rem]">
+                  <input
+                    type="text"
+                    value="402 Spring Gate Blvd."
+                    aria-label="Search by address"
+                    class="block w-full pr-5.5 py-.5 pl-1 bg-transparent text-xs md:text-sm font-semibold tracking-tight md:tracking-tighter text-darkText placeholder-lightText border-transparent focus:border-primary focus:outline-none focus:ring-0"
+                    placeholder="Search address..."
+                  >
+                  <button type="submit" class="absolute inset-y-0 right-1 flex items-center cursor-pointer" aria-label="Submit search">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                      <path stroke="#949494" stroke-linecap="square" stroke-miterlimit="10" d="M14.375 14.375 10.25 10.25M6.5 11.75a5.25 5.25 0 1 0 0-10.5 5.25 5.25 0 0 0 0 10.5Z"/>
+                    </svg>
+                  </button>
+                </div>
+              </form>
+              <!-- Search bar - desktop -->
+            </div>
+            <!-- Right navigation authorized -->
+            <nav class="flex items-center gap-x-0.5" aria-label="User menu">
+              <button class="relative flex items-center justify-center w-9 h-9 text-darkText3" aria-label="Messages (2)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18">
+                  <path fill="currentColor" d="M9 1.8C5.03 1.8 1.8 5.03 1.8 9c0 1.296.35 2.51.952 3.562l-.916 2.75a.675.675 0 0 0 .853.854l2.75-.917A7.148 7.148 0 0 0 9 16.201c3.97 0 7.2-3.23 7.2-7.2S12.97 1.8 9 1.8Z"/>
+                </svg>
+                <span class="absolute top-0 right-1 h-4 w-4 flex items-center justify-center text-[9px] rounded-full bg-primary text-white border-2 border-white">2</span>
+              </button>
+              <button class="relative flex items-center justify-center w-9 h-9 text-darkText3" aria-label="Cart (2)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18">
+                  <path fill="currentColor" d="M3.656 17.438a1.969 1.969 0 1 0 0-3.938 1.969 1.969 0 0 0 0 3.938ZM14.344 17.438a1.969 1.969 0 1 0 0-3.938 1.969 1.969 0 0 0 0 3.938ZM3.19 11.09a.274.274 0 0 1 .033-.298l.984-1.23h8.6a2.238 2.238 0 0 0 2.155-1.604l1.544-5.146H3.622l-.15-1.043A1.413 1.413 0 0 0 2.082.562H.563v1.125H2.08c.139 0 .258.104.278.241l.987 6.91-1.002 1.252c-.34.425-.405.996-.169 1.488.236.491.722.797 1.268.797h12.869V11.25H3.443a.273.273 0 0 1-.254-.16Z"/>
+                </svg>
+                <span class="absolute top-0 right-1 h-4 w-4 flex items-center justify-center text-[9px] rounded-full bg-primary text-white border-2 border-white">2</span>
+              </button>
+              <div class="relative w-9 h-9 rounded-full overflow-hidden" aria-label="User profile avatar"
+                   style="--pct:25;background:conic-gradient(#FF603F calc(var(--pct)*1%), #F5F5F5 0)">
+                <div class="absolute inset-0.5 bg-white rounded-full flex items-center justify-center">
+                  <img class="w-7 h-7 rounded-full object-cover"
+                       src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=100"
+                       alt="User avatar" />
+                </div>
+              </div>
+            </nav>
+            <!-- Right navigation authorized -->
+
+            <!-- Right navigation non authorized -->
+            <nav class="hidden" aria-label="Guest navigation">
+              <a href="#" class="btn-primary medium w-[6.25rem]" role="button">Sign In</a>
+            </nav>
+            <!-- Right navigation non authorized -->
+          </div>
+        </div>
+      </header>
+
+      <!-- Map Section -->
+      <section class="relative h-[25rem] md:h-[35.875rem] lg:h-[34.625rem] overflow-hidden" role="region" aria-label="Property map with listings and actions">
+        <img src="https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&w=1920"
+             alt="Map"
+             class="absolute left-0 top-0 w-full h-full object-cover">
+
+        <div class="container relative h-full">
+          <!-- Map markers -->
+          <div class="absolute top-28 lg:top-72 left-8 flex flex-col text-center font-semibold cursor-pointer">
+            <span class="pt-1 px-2 pb-2 rounded-t-md bg-success text-xs text-white tracking-tight">For Rent</span>
+            <span class="-mt-1 px-2 py-1.5 bg-white rounded-md tracking-tighter shadow-custom">$800</span>
+          </div>
+
+          <div class="absolute top-28 lg:top-72 left-24 flex flex-col text-center font-semibold cursor-pointer">
+              <span class="pt-1 px-2 pb-2 rounded-t-md bg-primary text-xs text-white tracking-tight">For sale</span>
+              <span class="-mt-1 px-2 py-1.5 bg-white rounded-md tracking-tighter shadow-custom">$1.2k</span>
+            </div>
+
+          <div class="absolute top-28 lg:top-72 left-40 text-[0.625rem] cursor-pointer">
+            <div class="relative flex justify-center mb-1">
+              <span class="absolute -top-0.5 left-1.5 flex w-3.5 h-3.5 border border-white rounded-full bg-primary text-white items-center justify-center leading-none">1</span>
+              <div class="w-8 h-8 rounded-full overflow-hidden">
+                <img src="src/assets/img/profile-image.webp" alt="Status badge logo" class="w-full h-full object-contain">
+              </div>
+              <span class="absolute -bottom-0.5 right-1.5 w-3.5 h-3.5"><img src="src/assets/icons/status-badge-logo.svg" alt="Status badge icon"></span>
+            </div>
+            <p class="font-semibold tracking-tight">Top Electrician</p>
+          </div>
+
+          <div class="absolute top-28 lg:top-72 left-56 text-[0.625rem] cursor-pointer">
+            <div class="relative flex justify-center mb-1">
+              <span class="absolute -top-0.5 left-1.5 flex w-3.5 h-3.5 border border-white rounded-full bg-primary text-white items-center justify-center leading-none">1</span>
+              <div class="w-8 h-8 rounded-full overflow-hidden">
+                <img src="src/assets/img/profile-image-1.webp" alt="Status badge logo" class="w-full h-full object-contain">
+              </div>
+              <span class="absolute -bottom-0.5 right-1.5 w-3.5 h-3.5"><img src="src/assets/icons/status-badge-check.svg" alt="Status badge icon"></span>
+            </div>
+            <p class="font-semibold tracking-tight">Top Schools</p>
+          </div>
+
+          <div class="absolute top-44 lg:top-96 left-32 flex flex-col text-center font-semibold cursor-pointer">
+            <div class="flex">
+              <p class="flex min-w-14 flex-col pt-1 px-1 pb-2 rounded-ss-md bg-primary text-xs text-white tracking-tight">
+                <span class="whitespace-nowrap">For sale</span>
+                <span>$210k</span>
+              </p>
+              <p class="flex min-w-14 flex-col pt-1 px-1 pb-2 rounded-se-md bg-success text-xs text-white tracking-tight">
+                <span class="whitespace-nowrap">For Rent</span>
+                <span>$4.3k</span>
+              </p>
+            </div>
+            <div class="flex flex-col items-center -mt-1 px-2 py-1.5 gap-y-1 bg-white rounded-md tracking-tighter leading-none shadow-custom">
+              <img src="src/assets/icons/logo-full.svg" alt="Home.ca" class="w-12">
+              <span class="text-[0.625rem]">Estimated value</span>
+            </div>
+          </div>
+          <!-- Map markers -->
+
+          <!--  Photos  -->
+          <button class="absolute w-[6.875rem] h-[4.5rem] top-5 left-5 md:left-8 lg:left-auto lg:right-5 rounded-md overflow-hidden after:absolute after:inset-0 after:bg-black after:opacity-25"
+                  aria-label="View 9 photos of the property"
+          >
+            <span class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-sm font-semibold whitespace-nowrap z-10">9 photos</span>
+            <img src="https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&w=1920"
+                 alt="Photos"
+                 class="h-full w-full object-cover">
+          </button>
+          <!--  Photos  -->
+
+          <!-- Map button -->
+          <button class="hidden absolute top-5 left-5 md:left-8 lg:left-auto lg:right-5 flex gap-x-1.5 h-9 px-2.5 items-center bg-white rounded-md shadow-custom font-semibold"
+                  aria-label="Open full map view">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path fill="#1F1F1F" d="m4.889 1.91-2.782.618A1.547 1.547 0 0 0 .89 4.046v7.512c0 .475.212.917.582 1.213.37.297.847.41 1.311.305l2.108-.467L4.889 1.91ZM9.778 3.27 6.223 1.977v10.752l3.555 1.294V3.27ZM14.528 3.229a1.544 1.544 0 0 0-1.311-.305l-2.108.467V14.09l2.782-.618a1.547 1.547 0 0 0 1.218-1.518V4.442c0-.475-.211-.916-.581-1.213Z"/></svg>
+            Map
+          </button>
+          <!-- Map button -->
+
+          <!-- Map actions (mobile, tablet) -->
+          <div class="absolute flex lg:hidden top-5 right-5 md:right-8 gap-x-1.5">
+            <button class="w-9 h-9 flex items-center justify-center bg-white rounded-md shadow-custom" aria-label="Highlight zones">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18"><path fill="#212121" stroke="#1F1F1F" d="m9.266 1.253.047.01a1.942 1.942 0 0 1 1.275 2.198l-.047.186-.764 2.482-.199.647h5.17c.579 0 1.095.386 1.22.924l.02.11c.037.297-.037.573-.186.798l-.257.388.368.284a1.177 1.177 0 0 1-.192 1.987l-.447.225.224.446a1.184 1.184 0 0 1-.488 1.564l-.396.219.178.416a.983.983 0 0 1 .07.244l.01.087c.032.569-.474 1.058-1.07 1.058h-4.43c-1.483 0-2.604-.28-3.352-.56l-.135-.041c-.43-2.657-.43-5.28.003-7.938l.095-.551a.91.91 0 0 1 .083-.246l.043-.075c.145-.227.294-.454.446-.678l.46-.671.09-.13c.669-.962 1.334-1.917 1.737-2.825l.156-.386a.253.253 0 0 1 .268-.172ZM2.799 7.151h.914c-.421 2.924-.36 5.82.183 8.75H2.8a.624.624 0 0 1-.56-.343l-.037-.093a13.71 13.71 0 0 1-.136-7.384l.136-.493A.62.62 0 0 1 2.8 7.15Z"/></svg>
+            </button>
+            <button class="w-9 h-9 flex items-center justify-center bg-white rounded-md shadow-custom" aria-label="Filter results">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18"><path stroke="#1F1F1F" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4.5 9 9-4.5M13.5 13.5 4.5 9"/><path fill="#212121" stroke="#1F1F1F" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.5 10.8a1.8 1.8 0 1 0 0-3.6 1.8 1.8 0 0 0 0 3.6ZM13.5 15.3a1.8 1.8 0 1 0 0-3.6 1.8 1.8 0 0 0 0 3.6ZM13.5 6.3a1.8 1.8 0 1 0 0-3.6 1.8 1.8 0 0 0 0 3.6Z"/></svg>
+            </button>
+          </div>
+          <!-- Map actions (mobile, tablet) -->
+
+          <!-- Map item's info -->
+          <div class="absolute lg:top-2.5 bottom-0 lg:bottom-auto left-0 lg:left-4 w-full lg:max-w-[29rem] translate-y-10 lg:translate-y-0"
+               role="complementary" aria-label="Property details panel"
+          >
+            <div class="flex pt-2.5 px-5 pb-6 md:px-8 lg:pt-2.5 lg:px-5 justify-between items-start bg-primary text-white font-semibold rounded-t-lg">
+              <span>For Sale</span>
+              <span>$2.3m</span>
+            </div>
+            <div class="relative -mt-3 lg:-mt-3.5 pt-6 px-5 md:px-8 lg:p-5 lg:py-5 rounded-t-2xl lg:rounded-md bg-white
+                        md:after:hidden after:absolute after:left-1/2 after:top-[15px] after:h-1 after:w-[6.875rem]
+                        after:-translate-x-1/2 after:bg-lightGray after:rounded">
+              <div class="breadcrumbs hidden lg:flex lg:items-center lg:mb-3" aria-label="Breadcrumb navigation">
+                <a href="#">Home</a>
+                <a href="#">Vaughan</a>
+                <span aria-current="location">402 Spring Gate Blvd. Thornhill, ON L4J4K6</span>
+              </div>
+              <div class="flex justify-between gap-x-10">
+                <div>
+                  <div class="text-2xl font-semibold mb-0.5">402 Spring Gate Blvd.</div>
+                  <div class="mb-3 text-sm text-lightText md:text-darkText">Thornhill, ON L4J4K6</div>
+                  <button class="btn-primary medium w-full lg:w-auto" aria-label="Get pre-qualified for 402 Spring Gate Blvd.">
+                    Get pre-qualified
+                  </button>
+                </div>
+                <div class="hidden lg:flex gap-x-1.5">
+                  <button class="w-9 h-9 flex items-center justify-center bg-lightGray hover:bg-bgGray2 active:bg-greyscaleGray2 rounded-md duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18"><path fill="#212121" stroke="#1F1F1F" d="m9.266 1.253.047.01a1.942 1.942 0 0 1 1.275 2.198l-.047.186-.764 2.482-.199.647h5.17c.579 0 1.095.386 1.22.924l.02.11c.037.297-.037.573-.186.798l-.257.388.368.284a1.177 1.177 0 0 1-.192 1.987l-.447.225.224.446a1.184 1.184 0 0 1-.488 1.564l-.396.219.178.416a.983.983 0 0 1 .07.244l.01.087c.032.569-.474 1.058-1.07 1.058h-4.43c-1.483 0-2.604-.28-3.352-.56l-.135-.041c-.43-2.657-.43-5.28.003-7.938l.095-.551a.91.91 0 0 1 .083-.246l.043-.075c.145-.227.294-.454.446-.678l.46-.671.09-.13c.669-.962 1.334-1.917 1.737-2.825l.156-.386a.253.253 0 0 1 .268-.172ZM2.799 7.151h.914c-.421 2.924-.36 5.82.183 8.75H2.8a.624.624 0 0 1-.56-.343l-.037-.093a13.71 13.71 0 0 1-.136-7.384l.136-.493A.62.62 0 0 1 2.8 7.15Z"/></svg>
+                  </button>
+                  <button class="w-9 h-9 flex items-center justify-center bg-lightGray hover:bg-bgGray2 active:bg-greyscaleGray2 rounded-md duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18"><path stroke="#1F1F1F" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4.5 9 9-4.5M13.5 13.5 4.5 9"/><path fill="#212121" stroke="#1F1F1F" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.5 10.8a1.8 1.8 0 1 0 0-3.6 1.8 1.8 0 0 0 0 3.6ZM13.5 15.3a1.8 1.8 0 1 0 0-3.6 1.8 1.8 0 0 0 0 3.6ZM13.5 6.3a1.8 1.8 0 1 0 0-3.6 1.8 1.8 0 0 0 0 3.6Z"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Map item's info -->
+        </div>
+      </section>
+
+      <!-- Main navigation -->
+      <nav x-ref="nav" class="sticky top-[3.25rem] bg-white overflow-hidden z-10">
+        <div class="container px-0 lg:px-4">
+          <div class="border-b border-bgGray2">
+            <div class="scroll-nav-container">
+              <a href="#" class="nav-link active" aria-label="Home Dashboard">
+                <div class="nav-link__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 14 14"><path fill="currentColor" d="M3.5 0h-2A1.5 1.5 0 0 0 0 1.5v2A1.5 1.5 0 0 0 1.5 5h2A1.5 1.5 0 0 0 5 3.5v-2A1.5 1.5 0 0 0 3.5 0ZM12.5 0h-2A1.5 1.5 0 0 0 9 1.5v2A1.5 1.5 0 0 0 10.5 5h2A1.5 1.5 0 0 0 14 3.5v-2A1.5 1.5 0 0 0 12.5 0ZM3.5 9h-2A1.5 1.5 0 0 0 0 10.5v2A1.5 1.5 0 0 0 1.5 14h2A1.5 1.5 0 0 0 5 12.5v-2A1.5 1.5 0 0 0 3.5 9ZM12.5 9h-2A1.5 1.5 0 0 0 9 10.5v2a1.5 1.5 0 0 0 1.5 1.5h2a1.5 1.5 0 0 0 1.5-1.5v-2A1.5 1.5 0 0 0 12.5 9Z"/></svg>
+                </div>
+                <span class="text-sm font-semibold tracking-tighter text-darkText">Home Dashboard</span>
+              </a>
+              <a href="#" class="nav-link" aria-label="Know Your Home">
+                <div class="nav-link__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" fill="none" viewBox="0 0 16 18"><path fill="currentColor" d="M15.01 5.226 9.177.792a1.948 1.948 0 0 0-2.354 0L.99 5.226a1.955 1.955 0 0 0-.768 1.547v8.06a3.058 3.058 0 0 0 3.056 3.056h3.055v-4.445a1.667 1.667 0 0 1 3.334 0v4.445h3.055a3.058 3.058 0 0 0 3.056-3.056v-8.06c0-.603-.287-1.18-.768-1.547Z"/></svg>
+                </div>
+                <span class="text-sm font-semibold tracking-tighter text-darkText">Know Your Home</span>
+              </a>
+              <a href="#" class="nav-link" aria-label="Discover Your Neighborhood">
+                <div class="nav-link__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" fill="none" viewBox="0 0 18 19"><path fill="currentColor" fill-rule="evenodd" d="M9.833 0v2.5H8.167V0h1.666ZM17.333 18.333V6.667H9v11.666h8.333ZM14.008 10h-1.675v1.667h1.675V10Zm-1.675 5v-1.667h1.675V15h-1.675Z" clip-rule="evenodd"/><path fill="currentColor" d="M4.833 2.683 13.167.599V5H9c-.92 0-1.667.746-1.667 1.667v3.476l-2.5-.834V2.683Z"/><path fill="currentColor" fill-rule="evenodd" d="M.667 9.677 7.333 11.9v6.434H.667V9.677Zm4.175 3.656V15H3.167v-1.667h1.675Z" clip-rule="evenodd"/></svg>
+                </div>
+                <span class="text-sm font-semibold tracking-tighter text-darkText">Discover Your Neighborhood</span>
+              </a>
+              <a href="#" class="nav-link" aria-label="Maintenance & Upkeep">
+                <div class="nav-link__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path fill="currentColor" d="M14.814 1.829a4.2 4.2 0 0 0-5.9.023l-.433.433 8.079 8.401 3.378-3.378-5.124-5.48ZM9.426 8.542l-2.551-2.55V2.738L2.377.489.489 2.377l2.25 4.498H5.99l2.55 2.55.885-.883ZM18.503 14.662l-4.256-3.94-3.396 3.666 3.81 4.116a2.698 2.698 0 0 0 1.943.87h.054c.725 0 1.406-.28 1.92-.796.528-.527.81-1.229.795-1.974a2.69 2.69 0 0 0-.871-1.942h.001Z"/><path fill="currentColor" d="m10.57 6.261-9.074 8.401a2.695 2.695 0 0 0-.87 1.943 2.693 2.693 0 0 0 .795 1.974 2.692 2.692 0 0 0 1.92.796h.054a2.696 2.696 0 0 0 1.943-.87l8.341-9.01-3.109-3.233Z"/></svg>
+                </div>
+                <span class="text-sm font-semibold tracking-tighter text-darkText">Maintenance & Upkeep</span>
+              </a>
+              <a href="#" class="nav-link" aria-label="Manage Finances">
+                <div class="nav-link__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18"><path fill="currentColor" fill-rule="evenodd" d="M17.75 9A8.75 8.75 0 1 1 .25 9a8.75 8.75 0 0 1 17.5 0ZM9.625 3.375h-1.25v1.25a2.5 2.5 0 0 0 0 5h1.25a1.25 1.25 0 1 1 0 2.5H6.708v1.25h1.667v1.25h1.25v-1.25a2.5 2.5 0 0 0 0-5h-1.25a1.25 1.25 0 1 1 0-2.5h2.917v-1.25H9.625v-1.25Z" clip-rule="evenodd"/></svg>
+                </div>
+                <span class="text-sm font-semibold tracking-tighter text-darkText">Manage Finances</span>
+              </a>
+              <a href="#" class="nav-link" aria-label="Plan for Emergencies">
+                <div class="nav-link__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18"><path fill="currentColor" d="m16.438 4.653-3.091-3.09a3.035 3.035 0 0 0-2.162-.896H6.813c-.816 0-1.583.317-2.16.895L1.56 4.653a3.035 3.035 0 0 0-.895 2.161v4.373c0 .816.317 1.583.895 2.16l3.091 3.092a3.035 3.035 0 0 0 2.161.895h4.372c.817 0 1.584-.317 2.162-.895l3.09-3.091a3.035 3.035 0 0 0 .896-2.161V6.814c0-.816-.317-1.583-.895-2.16Zm-8.271.381a.834.834 0 0 1 1.666 0v4.6a.834.834 0 0 1-1.666 0v-4.6ZM9 13.908a1.113 1.113 0 0 1-1.111-1.111c0-.613.499-1.111 1.111-1.111s1.111.498 1.111 1.11c0 .613-.499 1.112-1.111 1.112Z"/></svg>
+                </div>
+                <span class="text-sm font-semibold tracking-tighter text-darkText">Plan for Emergencies</span>
+              </a>
+              <a href="#" class="nav-link" aria-label="Improvements Ideas">
+                <div class="nav-link__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" fill="none" viewBox="0 0 18 19"><path fill="currentColor" d="m8.859 17.747.204-1.194-.863-.842a2.515 2.515 0 0 1-.631-2.567 2.482 2.482 0 0 1 2.018-1.697l1.193-.174.532-1.082c.416-.838 1.275-1.355 2.244-1.355.956 0 1.803.508 2.222 1.325V6.772c0-.603-.287-1.182-.768-1.549L9.177.793a1.948 1.948 0 0 0-2.354 0L.99 5.225a1.955 1.955 0 0 0-.768 1.547v8.06a3.058 3.058 0 0 0 3.056 3.056h5.577c.006-.048-.003-.095.005-.142h-.001Z"/><path fill="currentColor" d="m17.286 13.097-2.062-.3-.92-1.868c-.283-.569-1.214-.569-1.496 0l-.921 1.868-2.061.3a.833.833 0 0 0-.462 1.421l1.492 1.454-.353 2.054a.833.833 0 0 0 1.21.878l1.844-.97 1.844.97a.826.826 0 0 0 .877-.063.835.835 0 0 0 .332-.815l-.352-2.054 1.492-1.454a.833.833 0 0 0-.462-1.421h-.002Z"/></svg>
+                </div>
+                <span class="text-sm font-semibold tracking-tighter text-darkText">Improvements Ideas</span>
+              </a>
+              <a href="#" class="nav-link" aria-label="Opportunities & Incentives">
+                <div class="nav-link__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" fill="none" viewBox="0 0 16 20"><path fill="currentColor" d="M13.278 17.222h-2.222a.834.834 0 0 1 0-1.666h2.222a.278.278 0 0 0 .278-.278V4.722a.278.278 0 0 0-.278-.278h-2.222a.834.834 0 0 1 0-1.666h2.222c1.072 0 1.944.872 1.944 1.944v10.556a1.947 1.947 0 0 1-1.944 1.944ZM8.493 1.067A1.39 1.39 0 0 0 7.188.94L1.975 3.112A1.94 1.94 0 0 0 .777 4.907v10.185c0 .787.47 1.492 1.196 1.795l5.215 2.172a1.388 1.388 0 0 0 1.922-1.282V2.222c0-.465-.23-.898-.618-1.155Zm-2.16 9.489a.834.834 0 0 1-1.666 0V9.444a.834.834 0 0 1 1.666 0v1.112Z"/></svg>
+                </div>
+                <span class="text-sm font-semibold tracking-tighter text-darkText">Opportunities & Incentives</span>
+              </a>
+              <a href="#" class="nav-link" aria-label="Smart Home Monitoring">
+                <div class="nav-link__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" fill="none" viewBox="0 0 18 19"><path fill="currentColor" d="M7.444 16.639c0-1.905 1.405-3.551 3.213-3.94a5.006 5.006 0 0 1 4.01-2.032c.383 0 .752.052 1.11.134V6.773c0-.603-.286-1.182-.767-1.549L9.177.792a1.948 1.948 0 0 0-2.354 0L.99 5.226a1.955 1.955 0 0 0-.768 1.547v8.06a3.058 3.058 0 0 0 3.056 3.056h4.385a3.986 3.986 0 0 1-.219-1.25Z"/><path fill="currentColor" d="M14.667 12.333c-1.318 0-2.49.794-3.023 1.951-1.33-.1-2.533.996-2.533 2.355A2.363 2.363 0 0 0 11.472 19h3.195A3.337 3.337 0 0 0 18 15.667a3.337 3.337 0 0 0-3.333-3.334Z"/></svg>
+                </div>
+                <span class="text-sm font-semibold tracking-tighter text-darkText">Smart Home Monitoring</span>
+              </a>
+              <a href="#" class="nav-link" aria-label="Insurance Management">
+                <div class="nav-link__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" fill="none" viewBox="0 0 18 19"><path fill="currentColor" d="M8.556 15.6v-3.267c0-.977.575-1.87 1.465-2.275l3.056-1.39a2.473 2.473 0 0 1 1.034-.224c.36 0 .709.076 1.036.225l.63.287V6.773c0-.603-.286-1.182-.767-1.549L9.177.792a1.948 1.948 0 0 0-2.354 0L.99 5.226a1.955 1.955 0 0 0-.768 1.547v8.06a3.058 3.058 0 0 0 3.056 3.056h5.995a3.968 3.968 0 0 1-.717-2.289Z"/><path fill="currentColor" d="m17.512 11.574-3.055-1.388a.831.831 0 0 0-.69 0l-3.056 1.388a.833.833 0 0 0-.488.76V15.6c0 2.278 3.29 3.264 3.665 3.369a.811.811 0 0 0 .449 0C14.71 18.864 18 17.878 18 15.6v-3.267a.836.836 0 0 0-.489-.759Z"/></svg>
+                </div>
+                <span class="text-sm font-semibold tracking-tighter text-darkText">Insurance Management</span>
+              </a>
+              <a href="#" class="nav-link" aria-label="Mortgage Management">
+                <div class="nav-link__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18"><path fill="currentColor" fill-rule="evenodd" d="m12.1.225 5.875 4.406-.75 1L12.1 1.787 6.975 5.631l-.75-1L12.1.225Z" clip-rule="evenodd"/><path fill="currentColor" d="M7.933 6.475v2.656c0 .806.653 1.459 1.459 1.459h1.458V7.673h2.5v2.917h1.459c.805 0 1.458-.653 1.458-1.459V6.475L12.1 3.35 7.933 6.475ZM15.8 14.928l-6.174 2.428a3.334 3.334 0 0 1-1.76.15l-4.933-.915V12.57l.435-.368a3.29 3.29 0 0 1 4.23-.016l.335.28h1.25c.92 0 1.666.745 1.667 1.665v.21H7.308v.208l3.415.341a.833.833 0 0 0 .9-.665l.06-.301 3.832-.375a.712.712 0 0 1 .286 1.38ZM1.684 11.423v6.25H.017v-6.25h1.667Z"/></svg>
+                </div>
+                <span class="text-sm font-semibold tracking-tighter text-darkText">Mortgage Management</span>
+              </a>
+              <a href="#" class="nav-link" aria-label="Pet-Friendly Home">
+                <div class="nav-link__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18"><path fill="currentColor" fill-rule="evenodd" d="M6.953 8.43c.656-.413 1.362-.68 2.047-.68s1.391.267 2.047.68c.66.414 1.297.992 1.852 1.657 1.1 1.32 1.934 3.053 1.934 4.642 0 .7-.294 1.364-.81 1.85a2.812 2.812 0 0 1-1.928.754c-.62 0-1.174-.145-1.732-.407-.36-.17-.682-.322-1.363-.322-.495 0-.926.116-1.37.325-.41.193-.862.404-1.725.404a2.812 2.812 0 0 1-1.927-.754 2.542 2.542 0 0 1-.811-1.85c0-1.59.833-3.321 1.934-4.642.555-.665 1.192-1.243 1.852-1.658ZM14.417 7.75c0-1.083.689-2.083 1.666-2.083.978 0 1.667 1 1.667 2.083 0 1.083-.689 2.083-1.667 2.083-.977 0-1.666-1-1.666-2.083ZM.25 7.75c0-1.083.689-2.083 1.667-2.083.977 0 1.666 1 1.666 2.083 0 1.083-.689 2.083-1.666 2.083-.978 0-1.667-1-1.667-2.083ZM3.583 3.375c0-1.427.964-2.708 2.292-2.708 1.328 0 2.292 1.281 2.292 2.708 0 1.427-.964 2.708-2.292 2.708-1.328 0-2.292-1.281-2.292-2.708ZM9.833 3.375c0-1.427.964-2.708 2.292-2.708 1.328 0 2.292 1.281 2.292 2.708 0 1.427-.964 2.708-2.292 2.708-1.328 0-2.292-1.281-2.292-2.708Z" clip-rule="evenodd"/></svg>
+                </div>
+                <span class="text-sm font-semibold tracking-tighter text-darkText">Pet-Friendly Home</span>
+              </a>
+              <a href="#" class="nav-link" aria-label="Rental Management">
+                <div class="nav-link__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" fill="none" viewBox="0 0 20 18"><path fill="currentColor" d="m17.922 12.675-7.3.635a3.334 3.334 0 0 1-1.943-.427l-2.012-1.15h4.695a1.138 1.138 0 0 0 .21-2.257l-4.216-.792A16.661 16.661 0 0 0 4.284 8.4H.834v6.033l6.853 2.857a4 4 0 0 0 2.37.083l9.11-3.556a1.147 1.147 0 0 0-1.245-1.142ZM17.405 2.303a.417.417 0 0 0-.322-.153H9.638a3.125 3.125 0 1 0 0 2.917h1.514l.745.373a.417.417 0 0 0 .417-.027l1.02-.68 1.018.68a.417.417 0 0 0 .417.026l.746-.372h1.152a.417.417 0 0 0 .408-.334l.417-2.083a.415.415 0 0 0-.087-.347ZM6.042 4.65a1.042 1.042 0 1 1 0-2.083 1.042 1.042 0 0 1 0 2.083Z"/></svg>
+                </div>
+                <span class="text-sm font-semibold tracking-tighter text-darkText">Rental Management</span>
+              </a>
+              <a href="#" class="nav-link" aria-label="Explore Top Places Nearby">
+                <div class="nav-link__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path fill="currentColor" fill-rule="evenodd" d="M16.25 7.068c0 2.522-1.544 4.916-3.017 6.636a22.605 22.605 0 0 1-2.043 2.087c-.384.344-.78.67-1.19.983a19.15 19.15 0 0 1-1.19-.985c-.557-.5-1.3-1.219-2.043-2.089C5.294 11.98 3.75 9.585 3.75 7.068 3.75 3.088 6.97.833 10 .833s6.25 2.255 6.25 6.235ZM10 4.583a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Z" clip-rule="evenodd"/><path fill="currentColor" d="M17.262 13.74c.529.243.984.526 1.316.852.33.325.589.744.589 1.241 0 .64-.422 1.146-.904 1.51-.499.375-1.184.697-1.985.96-1.608.528-3.812.864-6.278.864-2.466 0-4.67-.333-6.278-.86-.8-.263-1.486-.584-1.985-.96-.484-.366-.904-.872-.904-1.514v-.018l.001-.018c.029-.493.292-.907.633-1.233.34-.326.8-.606 1.332-.845.56-.253 1.232-.473 1.993-.655l.342 1.203c-.718.17-1.331.37-1.822.592-.456.205-.778.415-.981.608-.185.178-.236.307-.247.383.008.072.072.246.406.499.347.262.89.53 1.622.77 1.454.477 3.521.798 5.888.798 2.366 0 4.433-.324 5.888-.802.73-.24 1.275-.509 1.622-.77.365-.275.407-.457.407-.512 0-.04-.021-.159-.215-.35-.193-.188-.508-.399-.962-.607-.5-.23-1.133-.44-1.88-.617l.348-1.202c.79.19 1.482.42 2.054.683Z"/></svg>
+                </div>
+                <span class="text-sm font-semibold tracking-tighter text-darkText">Explore Top Places Nearby</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Main Content -->
+      <main>
+        <!-- Know Your Home section -->
+        <section class="pt-9 mb-12">
+          <div class="container">
+            <div class="flex items-center justify-between mb-6">
+              <h2 class="text-2xl lg:text-[2rem] font-semibold -tracking-[0.72px] text-darkText">
+                Know Your Home
+              </h2>
+              <div class="relative flex">
+                <button @click="knowYourHomeMenu = !knowYourHomeMenu;"
+                  class="w-8 h-8 rounded-full bg-[url('/src/assets/icons/ellipsis.svg')] bg-no-repeat bg-[length:20px_20px] bg-center hover:bg-greyscaleGray2"
+                  :class="{ 'bg-greyscaleGray2': knowYourHomeMenu }"
+                  aria-label="Open dropdown menu"
+                  title="Options"
+                ></button>
+
+                <!-- Dropdown menu -->
+                <div x-show="knowYourHomeMenu"
+                    @click.away="knowYourHomeMenu = false"
+                    class="absolute right-0 top-full mt-1 w-52 bg-white rounded-lg border border-bgGrey2 shadow-custom z-10"
+                    x-cloak
+                >
+                  <div class="py-2 space-y-2">
+                    <a href="#" class="flex items-center gap-x-2 px-2.5 py-1 text-bade text-darkText3 transition duration-200 hover:bg-lightGray"
+                       aria-label="Add new info" title="Add info">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
+                        <path fill="currentColor" stroke="currentColor"
+                              d="M10 2.5c4.135 0 7.5 3.365 7.5 7.5s-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5S5.865 2.5 10 2.5ZM10 5a1.5 1.5 0 0 0-1.5 1.5v2h-2a1.5 1.5 0 0 0 0 3h2v2a1.5 1.5 0 0 0 3 0v-2h2a1.5 1.5 0 0 0 0-3h-2v-2A1.5 1.5 0 0 0 10 5Z"/>
+                      </svg>
+                      <span class="text-darkText font-medium">Add info</span>
+                    </a>
+                    <a href="#" class="flex items-center gap-x-2 px-2.5 py-1 text-bade text-darkText3 transition duration-200 hover:bg-lightGray"
+                       aria-label="Edit current section" title="Edit">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
+                        <g fill="currentColor" clip-path="url(#a)">
+                          <path
+                            d="m17.098 8.667 1.146-1.147a4.045 4.045 0 0 0 1.194-2.882 4.048 4.048 0 0 0-1.194-2.881c-1.538-1.54-4.223-1.54-5.761 0l-1.147 1.146 5.762 5.764ZM9.568 4.672l-6.48 6.48a4.164 4.164 0 0 0-1.08 1.873L.573 18.41a.832.832 0 0 0 1.02 1.018l5.385-1.434a4.164 4.164 0 0 0 1.874-1.08l6.48-6.48-5.764-5.762Z"/>
+                        </g>
+                        <defs>
+                          <clipPath id="a"><path fill="#fff" d="M0 0h20v20H0z"/></clipPath>
+                        </defs>
+                      </svg>
+                      <span class="text-darkText font-medium">Edit</span>
+                    </a>
+                    <a href="#" class="flex items-center gap-x-2 px-2.5 py-1 text-bade text-darkText3 transition duration-200 hover:bg-lightGray"
+                       aria-label="View detailed information" title="View Details">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
+                        <path fill="currentColor"
+                              d="M10 2c-4.411 0-8 3.589-8 8s3.589 8 8 8 8-3.589 8-8-3.589-8-8-8Zm1 12a1 1 0 1 1-2 0V9.5a1 1 0 1 1 2 0V14Zm-1-6.5c-.689 0-1.25-.561-1.25-1.25S9.311 5 10 5s1.25.561 1.25 1.25S10.689 7.5 10 7.5Z"/>
+                      </svg>
+                      <span class="text-darkText font-medium">View Details</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container px-0 md:px-4">
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-[repeat(4,8.75rem)] md:grid-cols-4 grid-rows-2 lg:grid-rows-[repeat(2,10rem)] gap-2.5 p-4 lg:px-0 hide-scrollbar overflow-x-auto">
+              <div class="flex flex-col items-start justify-between py-2.5 px-4 border border-bgGray2 rounded-md text-darkText3 hover:bg-primary hover:text-white group transition duration-200 cursor-pointer">
+                <svg class="transition duration-200" xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 48 48"><path fill="currentColor" d="m35.215 17.961-9.333-7.093a3.118 3.118 0 0 0-3.766 0l-9.333 7.093a3.128 3.128 0 0 0-1.228 2.477v12.896a4.893 4.893 0 0 0 4.889 4.889h4.889v-7.111a2.668 2.668 0 0 1 5.333 0v7.11h4.889a4.893 4.893 0 0 0 4.889-4.888V20.438a3.13 3.13 0 0 0-1.229-2.477Z"/></svg>
+                <div class="flex flex-col w-full">
+                  <span class="text-[1.75rem] xl:text-[2.625rem] font-semibold -tracking-[0.84px] lg:-traking-[1.26px] text-darkText group-hover:text-white transition duration-200">45</span>
+                  <span class="text-lg font-medium text-lightText leading-[1.4] lg:leading-none group-hover:text-white transition duration-200">Key Facts</span>
+                </div>
+              </div>
+              <div class="flex flex-col items-start justify-between py-2.5 px-4 border border-bgGray2 rounded-md text-darkText3 hover:bg-primary hover:text-white group transition duration-200 cursor-pointer">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_1907_131966)">
+                    <path d="M39 20H15C14.2044 20 13.4413 19.6839 12.8787 19.1213C12.3161 18.5587 12 17.7956 12 17C12 16.2044 12.3161 15.4413 12.8787 14.8787C13.4413 14.3161 14.2044 14 15 14H39C39.2652 14 39.5196 14.1054 39.7071 14.2929C39.8946 14.4804 40 14.7348 40 15V19C40 19.2652 39.8946 19.5196 39.7071 19.7071C39.5196 19.8946 39.2652 20 39 20Z" fill="currentColor"/>
+                    <path d="M15 12H22V10C22 9.46957 21.7893 8.96086 21.4142 8.58579C21.0391 8.21071 20.5304 8 20 8H10C9.46957 8 8.96086 8.21071 8.58579 8.58579C8.21071 8.96086 8 9.46957 8 10V38C8 38.5304 8.21071 39.0391 8.58579 39.4142C8.96086 39.7893 9.46957 40 10 40H20C20.5304 40 21.0391 39.7893 21.4142 39.4142C21.7893 39.0391 22 38.5304 22 38V22H15C13.6739 22 12.4021 21.4732 11.4645 20.5355C10.5268 19.5979 10 18.3261 10 17C10 15.6739 10.5268 14.4021 11.4645 13.4645C12.4021 12.5268 13.6739 12 15 12ZM15 28C15.5734 28.0012 16.129 28.1995 16.5736 28.5616C17.0182 28.9237 17.3248 29.4277 17.442 29.989C17.5592 30.5503 17.4799 31.1348 17.2174 31.6446C16.9548 32.1544 16.525 32.5584 16 32.789V35C16 35.2652 15.8946 35.5196 15.7071 35.7071C15.5196 35.8946 15.2652 36 15 36C14.7348 36 14.4804 35.8946 14.2929 35.7071C14.1054 35.5196 14 35.2652 14 35V32.789C13.475 32.5584 13.0452 32.1544 12.7826 31.6446C12.5201 31.1348 12.4408 30.5503 12.558 29.989C12.6752 29.4277 12.9818 28.9237 13.4264 28.5616C13.871 28.1995 14.4266 28.0012 15 28Z" fill="currentColor"/>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1907_131966">
+                      <rect width="32" height="32" fill="white" transform="translate(8 8)"/>
+                    </clipPath>
+                  </defs>
+                </svg>
+
+                <div class="flex flex-col w-full">
+                    <span class="text-[1.75rem] xl:text-[2.625rem] font-semibold -tracking-[0.84px] lg:-traking-[1.26px] text-darkText group-hover:text-white transition duration-200">5</span>
+                    <span class="text-lg font-medium text-lightText leading-[1.4] lg:leading-none group-hover:text-white transition duration-200">Rooms</span>
+                  </div>
+              </div>
+              <div class="flex flex-col items-start justify-between py-2.5 px-4 border border-bgGray2 rounded-md text-darkText3 hover:bg-primary hover:text-white group transition duration-200 cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 48 48"><path fill="currentColor" fill-rule="evenodd" d="M38 24c0 7.732-6.268 14-14 14s-14-6.268-14-14 6.268-14 14-14 14 6.268 14 14Zm-13-9h-2v2a4 4 0 0 0 0 8h2a2 2 0 1 1 0 4h-4.667v2H23v2h2v-2a4 4 0 0 0 0-8h-2a2 2 0 1 1 0-4h4.667v-2H25v-2Z" clip-rule="evenodd"/></svg>
+                <div class="flex flex-col w-full">
+                  <span class="text-[1.75rem] xl:text-[2.625rem] font-semibold -tracking-[0.84px] lg:-traking-[1.26px] text-darkText group-hover:text-white transition duration-200">$2.35</span>
+                  <span class="text-lg font-medium text-lightText leading-[1.4] lg:leading-none group-hover:text-white transition duration-200">Estimated Value</span>
+                </div>
+              </div>
+              <div class="flex flex-col items-start justify-between py-2.5 px-4 border border-bgGray2 rounded-md text-darkText3 hover:bg-primary hover:text-white group transition duration-200 cursor-pointer">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_1907_135414)">
+                      <path d="M24.0013 30.7187L33.3346 23.252L37.3346 26.452V9.33333C37.3346 8.97971 37.1942 8.64057 36.9441 8.39052C36.6941 8.14048 36.3549 8 36.0013 8H12.0013C11.6477 8 11.3085 8.14048 11.0585 8.39052C10.8084 8.64057 10.668 8.97971 10.668 9.33333V38.6667C10.668 39.0203 10.8084 39.3594 11.0585 39.6095C11.3085 39.8595 11.6477 40 12.0013 40H24.0013V30.7187ZM16.0013 16H31.9386V18.6667H16.0013V16ZM21.3346 32H16.0013V29.3333H21.3346V32ZM16.0013 25.3333V22.6667H26.668V25.3333H16.0013Z" fill="currentColor"/>
+                      <path d="M40.0013 32.0003L33.3346 26.667L26.668 32.0003V38.667C26.668 39.0206 26.8084 39.3598 27.0585 39.6098C27.3085 39.8599 27.6477 40.0003 28.0013 40.0003H32.0013V36.0003H34.668V40.0003H38.668C39.0216 40.0003 39.3607 39.8599 39.6108 39.6098C39.8608 39.3598 40.0013 39.0206 40.0013 38.667V32.0003Z" fill="currentColor"/>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1907_135414">
+                      <rect width="32" height="32" fill="white" transform="translate(8 8)"/>
+                    </clipPath>
+                  </defs>
+                </svg>
+
+                <div class="flex flex-col w-full">
+                  <span class="text-[1.75rem] xl:text-[2.625rem] font-semibold -tracking-[0.84px] lg:-traking-[1.26px] text-darkText group-hover:text-white transition duration-200">3</span>
+                  <span class="text-lg font-medium text-lightText leading-[1.4] lg:leading-none group-hover:text-white transition duration-200">Comparables</span>
+                </div>
+              </div>
+              <div class="flex flex-col items-start justify-between py-2.5 px-4 border border-bgGray2 rounded-md text-darkText3 hover:bg-primary hover:text-white group transition duration-200 cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 48 48"><path fill="currentColor" d="M31.7 10.927c-2.614-2.574-6.849-2.555-9.44.037l-.694.693 12.927 13.442 5.405-5.405-8.199-8.767ZM23.08 21.667l-4.082-4.08v-5.205l-7.197-3.599-3.02 3.02 3.6 7.197h5.203l4.081 4.081 1.414-1.414ZM37.602 31.46l-6.81-6.306-5.433 5.867 6.096 6.585A4.316 4.316 0 0 0 34.563 39h.087c1.16 0 2.25-.45 3.072-1.274a4.308 4.308 0 0 0 1.272-3.159A4.306 4.306 0 0 0 37.6 31.46l.002.001Z"/><path fill="currentColor" d="M24.912 18.019 10.394 31.46A4.313 4.313 0 0 0 9 34.569a4.309 4.309 0 0 0 1.273 3.158A4.307 4.307 0 0 0 13.346 39h.086a4.312 4.312 0 0 0 3.108-1.393l13.347-14.415-4.975-5.173v-.001Z"/></svg>
+                <div class="flex flex-col w-full">
+                  <span class="text-[1.75rem] xl:text-[2.625rem] font-semibold -tracking-[0.84px] lg:-traking-[1.26px] text-darkText group-hover:text-white transition duration-200">7</span>
+                  <span class="text-lg font-medium text-lightText leading-[1.4] lg:leading-none group-hover:text-white transition duration-200">Renovation History</span>
+                </div>
+              </div>
+              <div class="flex flex-col items-start justify-between py-2.5 px-4 border border-bgGray2 rounded-md text-darkText3 hover:bg-primary hover:text-white group transition duration-200 cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 48 48"><path fill="currentColor" d="M35.11 22.222h-6.666a1.334 1.334 0 0 1 0-2.666h6.222v-4.89a3.114 3.114 0 0 0-3.11-3.11H20.443v8h2.222a1.334 1.334 0 0 1 0 2.666h-2.222v4.89a1.334 1.334 0 0 1-2.667 0V11.555h-4.889a3.115 3.115 0 0 0-3.11 3.11v18.667a3.115 3.115 0 0 0 3.11 3.112h4.89v-3.556a1.334 1.334 0 0 1 2.666 0v3.556h14.667a3.115 3.115 0 0 0 3.11-3.112v-8a3.115 3.115 0 0 0-3.11-3.11Z"/></svg>
+                <div class="flex flex-col w-full">
+                  <span class="text-[1.75rem] xl:text-[2.625rem] font-semibold -tracking-[0.84px] lg:-traking-[1.26px] text-darkText group-hover:text-white transition duration-200">2</span>
+                  <span class="text-lg font-medium text-lightText leading-[1.4] lg:leading-none group-hover:text-white transition duration-200">Zoning & Usage</span>
+                </div>
+              </div>
+              <div class="flex flex-col items-start justify-between py-2.5 px-4 border border-bgGray2 rounded-md text-darkText3 hover:bg-primary hover:text-white group transition duration-200 cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 48 48"><path fill="currentColor" fill-rule="evenodd" d="M26.332 30.667a6.333 6.333 0 1 0 12.667 0 6.333 6.333 0 0 0-12.667 0Zm6.833 2a.5.5 0 1 0 0-1h-1a2.5 2.5 0 0 1-.5-4.95l.334-.716h1.333l.333.666H35v2h-2.834a.5.5 0 1 0 0 1h1a2.5 2.5 0 0 1 .5 4.95l-.333.717h-1.333l-.334-.667h-1.333v-2h2.833Z" clip-rule="evenodd"/><path fill="currentColor" d="M9.332 14.667a4 4 0 0 1 4-4h7.556l5.333 4h8.444a4 4 0 0 1 4 4v6.217A8.333 8.333 0 0 0 26.262 36h-12.93a4 4 0 0 1-4-4V14.667Z"/></svg>
+                <div class="flex flex-col w-full">
+                  <span class="text-[1.75rem] xl:text-[2.625rem] font-semibold -tracking-[0.84px] lg:-traking-[1.26px] text-darkText group-hover:text-white transition duration-200">37</span>
+                  <span class="text-lg font-medium text-lightText leading-[1.4] lg:leading-none group-hover:text-white transition duration-200">Transaction Records</span>
+                </div>
+              </div>
+              <div class="relative flex flex-col items-start justify-between pt-2.5 pb-1.5 px-4 border border-bgGray2 rounded-md text-darkText3 hover:bg-primary hover:text-white group transition duration-200 cursor-pointer">
+                <svg class="opacity-0 lg:opacity-100" xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 48 48"><path fill="currentColor" d="M36.206 22.322 25.983 12.1a4.854 4.854 0 0 0-3.456-1.433h-8.75a3.115 3.115 0 0 0-3.111 3.111v8.748c0 1.307.508 2.534 1.433 3.458L22.32 36.207a4.873 4.873 0 0 0 3.456 1.429 4.873 4.873 0 0 0 3.456-1.43l6.973-6.972a4.849 4.849 0 0 0 1.432-3.456 4.849 4.849 0 0 0-1.432-3.456Zm-17.096-.988a2.225 2.225 0 0 1-2.222-2.223c0-1.224.998-2.222 2.222-2.222 1.225 0 2.223.998 2.223 2.222a2.225 2.225 0 0 1-2.223 2.223Z"/></svg>
+                <div class="flex flex-col w-full">
+                  <span class="block text-[1.75rem] xl:text-[2.625rem] font-semibold -tracking-[0.84px] lg:-traking-[1.26px] text-darkText break-words group-hover:text-white transition duration-200">$1,475,600</span>
+                  <div class="flex gap-x-1 items-center">
+                    <span class="text-lg font-medium text-lightText leading-[1.4] group-hover:text-white transition duration-200">Currently</span>
+                    <span class="absolute lg:static top-5 left-5 inline-block py-[3px] px-2.5 bg-orange5 font-semibold text-xs rounded-md text-primary">For Sale</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Stats Grid -->
+          </div>
+        </section>
+        <!-- Know Your Home section -->
+
+        <!-- Manage Finances section -->
+        <section class="mb-12 overflow-hidden">
+          <div class="container">
+            <div class="pt-12 border-t border-greyscaleGray2">
+              <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl lg:text-[2rem] font-semibold -tracking-[0.72px] text-darkText">Manage Finances</h2>
+                <div class="relative flex">
+                  <button
+                    @click="manageFinancesMenu = !manageFinancesMenu;"
+                    class="w-8 h-8 rounded-full bg-[url('/src/assets/icons/ellipsis.svg')] bg-no-repeat bg-[length:20px_20px] bg-center hover:bg-greyscaleGray2"
+                    :class="{ 'bg-greyscaleGray2': manageFinancesMenu }"
+                  ></button>
+                  <!-- Dropdown menu -->
+                  <div
+                      x-show="manageFinancesMenu"
+                      @click.away="manageFinancesMenu = false"
+                      class="absolute right-0 top-full mt-1 w-52 bg-white rounded-lg border border-bgGrey2 shadow-custom z-10"
+                      x-cloak
+                    >
+                      <div class="py-2 space-y-2">
+                        <a href="#" class="flex items-center gap-x-2 px-2.5 py-1 text-bade text-darkText3 transition duration-200 hover:bg-lightGray">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path fill="currentColor" stroke="currentColor" d="M10 2.5c4.135 0 7.5 3.365 7.5 7.5s-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5S5.865 2.5 10 2.5ZM10 5a1.5 1.5 0 0 0-1.5 1.5v2h-2a1.5 1.5 0 0 0 0 3h2v2a1.5 1.5 0 0 0 3 0v-2h2a1.5 1.5 0 0 0 0-3h-2v-2A1.5 1.5 0 0 0 10 5Z"/></svg>
+                          <span class="text-darkText font-medium">Add info</span>
+                        </a>
+                        <a href="#" class="flex items-center gap-x-2 px-2.5 py-1 text-bade text-darkText3 transition duration-200 hover:bg-lightGray">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><g fill="currentColor" clip-path="url(#a)"><path d="m17.098 8.667 1.146-1.147a4.045 4.045 0 0 0 1.194-2.882 4.048 4.048 0 0 0-1.194-2.881c-1.538-1.54-4.223-1.54-5.761 0l-1.147 1.146 5.762 5.764ZM9.568 4.672l-6.48 6.48a4.164 4.164 0 0 0-1.08 1.873L.573 18.41a.832.832 0 0 0 1.02 1.018l5.385-1.434a4.164 4.164 0 0 0 1.874-1.08l6.48-6.48-5.764-5.762Z"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h20v20H0z"/></clipPath></defs></svg>
+                          <span class="text-darkText font-medium">Edit</span>
+                        </a>
+                        <a href="#" class="flex items-center gap-x-2 px-2.5 py-1 text-bade text-darkText3 transition duration-200 hover:bg-lightGray">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path fill="currentColor" d="M10 2c-4.411 0-8 3.589-8 8s3.589 8 8 8 8-3.589 8-8-3.589-8-8-8Zm1 12a1 1 0 1 1-2 0V9.5a1 1 0 1 1 2 0V14Zm-1-6.5c-.689 0-1.25-.561-1.25-1.25S9.311 5 10 5s1.25.561 1.25 1.25S10.689 7.5 10 7.5Z"/></svg>
+                          <span class="text-darkText font-medium">View Details</span>
+                        </a>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper manage-finances lg:-mx-4 lg:px-4">
+              <div class="swiper-wrapper flex-col lg:flex-row">
+                <!-- Your Total Monthly Costs -->
+                <div x-data="{ totalMonthlyCosts: false, open: true }"
+                     x-init="window.addEventListener('resize', () => {
+                              if (window.matchMedia('(min-width: 1024px)').matches) {
+                                open = true; }
+                            });"
+                    class="swiper-slide mb-2.5 lg:mb-0 p-4 bg-white rounded-lg border border-bgGrey2 z-10"
+                >
+                  <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-semibold">Your Total Monthly Costs</h3>
+                    <div class="flex items-center gap-x-1">
+                      <div class="relative flex"
+                           x-data="{ totalMonthlyCosts: false }">
+                        <button @click="totalMonthlyCosts = !totalMonthlyCosts;"
+                          class="w-8 h-8 rounded-full bg-[url('/src/assets/icons/ellipsis.svg')] bg-no-repeat bg-[length:20px_20px] bg-center hover:bg-greyscaleGray2"
+                          :class="{ 'bg-greyscaleGray2': totalMonthlyCosts }"
+                        ></button>
+                          <!-- Dropdown menu -->
+                        <div x-show="totalMonthlyCosts"
+                          @click.away="totalMonthlyCosts = false"
+                          class="absolute right-0 top-full mt-1 w-52 bg-white rounded-lg border border-bgGrey2 shadow-custom z-10"
+                          x-cloak
+                        >
+                          <div class="py-2 space-y-2">
+                            <a href="#" class="flex items-center gap-x-2 px-2.5 py-1 text-bade text-darkText3 transition duration-200 hover:bg-lightGray">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path fill="currentColor" stroke="currentColor" d="M10 2.5c4.135 0 7.5 3.365 7.5 7.5s-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5S5.865 2.5 10 2.5ZM10 5a1.5 1.5 0 0 0-1.5 1.5v2h-2a1.5 1.5 0 0 0 0 3h2v2a1.5 1.5 0 0 0 3 0v-2h2a1.5 1.5 0 0 0 0-3h-2v-2A1.5 1.5 0 0 0 10 5Z"/></svg>
+                              <span class="text-darkText font-medium">Add info</span>
+                            </a>
+                            <a href="#" class="flex items-center gap-x-2 px-2.5 py-1 text-bade text-darkText3 transition duration-200 hover:bg-lightGray">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><g fill="currentColor" clip-path="url(#a)"><path d="m17.098 8.667 1.146-1.147a4.045 4.045 0 0 0 1.194-2.882 4.048 4.048 0 0 0-1.194-2.881c-1.538-1.54-4.223-1.54-5.761 0l-1.147 1.146 5.762 5.764ZM9.568 4.672l-6.48 6.48a4.164 4.164 0 0 0-1.08 1.873L.573 18.41a.832.832 0 0 0 1.02 1.018l5.385-1.434a4.164 4.164 0 0 0 1.874-1.08l6.48-6.48-5.764-5.762Z"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h20v20H0z"/></clipPath></defs></svg>
+                              <span class="text-darkText font-medium">Edit</span>
+                            </a>
+                            <a href="#" class="flex items-center gap-x-2 px-2.5 py-1 text-bade text-darkText3 transition duration-200 hover:bg-lightGray">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path fill="currentColor" d="M10 2c-4.411 0-8 3.589-8 8s3.589 8 8 8 8-3.589 8-8-3.589-8-8-8Zm1 12a1 1 0 1 1-2 0V9.5a1 1 0 1 1 2 0V14Zm-1-6.5c-.689 0-1.25-.561-1.25-1.25S9.311 5 10 5s1.25.561 1.25 1.25S10.689 7.5 10 7.5Z"/></svg>
+                              <span class="text-darkText font-medium">View Details</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                      <button @click="open = !open"
+                        :class="{ 'transform rotate-180': open }"
+                        class="w-6 h-6 flex lg:hidden items-center justify-center rounded-full bg-lightGray bg-[url('src/assets/icons/accordion-arrow.svg')] bg-center bg-no-repeat transition duration-200"
+                      ></button>
+                    </div>
+                  </div>
+
+                  <div
+                        x-show="open"
+                        x-cloak
+                        class="grid md:grid-cols-[18.75rem_1fr] gap-y-2 md:gap-x-10 md:mt-8">
+                      <div class="relative mx-auto w-[18.75rem] h-[18.75rem]">
+                          <canvas id="monthlyExpensesChart"></canvas>
+                      </div>
+                      <div class="font-semibold">
+                          <div class="bg-lightGray rounded">
+                            <div class="grid grid-cols-[1fr_4rem] px-4 py-2.5 text-darkText4 text-sm -tracking-[0.48px]">
+                              <span>Type</span>
+                              <span class="text-center">Costs</span>
+                            </div>
+                          </div>
+                            <div class="text-darkText text-center -tracking-[0.48px]">
+                              <div class="grid grid-cols-[1fr_4rem] px-4 py-2.5 border-b border-lightGray">
+                                <div class="flex items-center gap-2">
+                                  <span class="w-2 h-2 rounded-full bg-primary"></span>
+                                  <span>Mortgage</span>
+                                </div>
+                                <span>$3,500</span>
+                              </div>
+                              <div class="grid grid-cols-[1fr_4rem] px-4 py-2.5 border-b border-lightGray">
+                                <div class="flex items-center gap-2">
+                                  <span class="w-2 h-2 rounded-full bg-orange5"></span>
+                                  <span>Insurance</span>
+                                </div>
+                                <span>$520</span>
+                              </div>
+                              <div class="grid grid-cols-[1fr_4rem] px-4 py-2.5">
+                                  <div class="flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-orange2"></span>
+                                    <span>Taxes & Other Fees</span>
+                                  </div>
+                                  <span>$1,800</span>
+                                </div>
+                            </div>
+                            <div class="hidden lg:flex lg:mt-4 lg:justify-center">
+                              <a href="#" class="text-primary hover:text-orange4 active:text-orange2 transition duration-200">See more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Your Total Monthly Costs -->
+
+                <!-- Your Taxes & Other Costs-->
+                <div x-data="{ otherCosts: false, open: false }"
+                     x-init="open = window.matchMedia('(min-width: 1024px)').matches;
+                            window.addEventListener('resize', () => {
+                              open = window.matchMedia('(min-width: 1024px)').matches;
+                            });"
+                     class="swiper-slide mb-2.5 lg:mb-0 p-4 bg-white rounded-lg border border-bgGrey2"
+                >
+                  <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-semibold">Your Taxes & Other Costs</h3>
+                    <div class="flex items-center gap-x-1">
+                      <button @click="open = !open"
+                          :class="{ 'transform rotate-180': open }"
+                          class="w-6 h-6 flex lg:hidden items-center justify-center rounded-full bg-lightGray bg-[url('src/assets/icons/accordion-arrow.svg')] bg-center bg-no-repeat transition duration-200"></button>
+                    </div>
+                  </div>
+
+                  <div x-show="open"
+                      x-cloak
+                      class="mt-6"
+                  >
+                    <div class="bg-lightGray rounded">
+                      <div class="grid grid-cols-[1fr_7rem] px-4 py-2.5 text-xs md:text-sm text-darkText4 font-semibold -tracking-[0.36px] md:-tracking-[0.48px]">
+                        <span>Provider</span>
+                        <span class="text-center">Payment</span>
+                      </div>
+                    </div>
+                    <div class="text-darkText font-semibold text-xs md:text-base -tracking-[0.36px] md:-tracking-[0.48px]">
+                        <div class="grid grid-cols-[1fr_7rem] items-center px-4 py-3 border-b border-lightGray">
+                          <span>Property Taxes</span>
+                          <div class="grid gap-y-0.5 text-center md:leading-tight">
+                            <span class="md:text-2xl">$150</span>
+                            <span class="text-[0.625rem] text-darkText4 font-normal">Per Month</span>
+                          </div>
+                        </div>
+                        <div class="grid grid-cols-[1fr_7rem] items-center px-4 py-3 border-b border-lightGray">
+                          <span>Maintenance Fees</span>
+                          <div class="grid gap-y-0.5 text-center md:leading-tight">
+                            <span class="md:text-2xl">$175</span>
+                            <span class="text-[0.625rem] text-darkText4 font-normal">Per Month</span>
+                          </div>
+                        </div>
+                        <div class="grid grid-cols-[1fr_7rem] items-center px-4 py-3 border-b border-lightGray">
+                          <span>Utilities</span>
+                          <div class="grid gap-y-0.5 text-center md:leading-tight">
+                            <span class="md:text-2xl">$200</span>
+                            <span class="text-[0.625rem] text-darkText4 font-normal">Per Month</span>
+                          </div>
+                        </div>
+                        <div class="grid grid-cols-[1fr_7rem] items-center px-4 py-3 border-b border-lightGray">
+                          <span>Association Fee</span>
+                          <div class="grid gap-y-0.5 text-center md:leading-tight">
+                            <span class="md:text-2xl">$22</span>
+                            <span class="text-[0.625rem] text-darkText4 font-normal">Per Month</span>
+                          </div>
+                        </div>
+                        <div class="grid grid-cols-[1fr_7rem] items-center px-4 py-3">
+                          <span>Other Fees</span>
+                          <div class="grid gap-y-0.5 text-center">
+                            <span>$260</span>
+                            <span class="text-[0.625rem] text-darkText4 font-normal">Per Month</span>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+                <!-- Your Taxes & Other Costs-->
+
+                <!-- Compare Mortgage Rates -->
+                <div x-data="{ compareMortgageRates: false, open: false }"
+                     x-init="open = window.matchMedia('(min-width: 1024px)').matches;
+                            window.addEventListener('resize', () => {
+                              open = window.matchMedia('(min-width: 1024px)').matches;
+                            });"
+                     class="swiper-slide mb-2.5 lg:mb-0 p-4 bg-white rounded-lg border border-bgGrey2">
+                  <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-semibold">Compare Mortgage Rates</h3>
+                    <div class="flex items-center gap-x-1">
+                        <button @click="open = !open"
+                            :class="{ 'transform rotate-180': open }"
+                            class="w-6 h-6 flex lg:hidden items-center justify-center rounded-full bg-lightGray bg-[url('src/assets/icons/accordion-arrow.svg')] bg-center bg-no-repeat transition duration-200"></button>
+                      </div>
+                  </div>
+
+                  <div x-show="open"
+                        x-cloak
+                        class="mt-6"
+                    >
+                      <div class="bg-lightGray rounded">
+                        <div class="grid grid-cols-[1fr_5.5rem_5.5rem] md:grid-cols-[1fr_11rem_11rem] px-1 md:pl-4 py-2.5 text-xs md:text-sm text-darkText4 font-semibold -tracking-[0.36px]">
+                          <span class="pl-1.5 md:pl-0">Provider</span>
+                          <span class="text-center">Rate</span>
+                          <span class="text-center">Payment</span>
+                        </div>
+                      </div>
+                      <div class="text-darkText font-semibold text-xs -tracking-[0.36px]">
+                        <div class="grid grid-cols-[1fr_5.5rem_5.5rem] md:grid-cols-[1fr_11rem_11rem] items-center px-1 md:pl-4 py-3 border-b border-lightGray">
+                          <div class="grid grid-cols-[2.5rem_1fr] items-center gap-x-2">
+                            <div>
+                              <img src="src/assets/img/logo-mortgage-company.webp"
+                                   alt="Mortage Company"
+                                   class="w-full h-full object-contain">
+                            </div>
+                            <div class="md:text-base"><p>Mortgage Company</p></div>
+                          </div>
+                          <div class="grid gap-y-0.5 text-center leading-tight">
+                            <span class="text-sm md:text-2xl md:-tracking-[0.6px]">4.00%</span>
+                            <span class="text-[0.625rem] text-darkText4 font-normal">Per Month</span>
+                          </div>
+                          <div class="grid gap-y-0.5 text-center leading-tight">
+                            <span class="text-sm md:text-2xl md:-tracking-[0.6px]">$3,000</span>
+                            <span class="text-[0.625rem] text-darkText4 font-normal">Per Month</span>
+                          </div>
+                        </div>
+                        <div class="grid grid-cols-[1fr_5.5rem_5.5rem] md:grid-cols-[1fr_11rem_11rem] items-center px-1 md:pl-4 py-3">
+                          <div class="grid grid-cols-[2.5rem_1fr] items-center gap-x-2">
+                            <div>
+                              <img src="src/assets/img/logo-scotiabank.webp"
+                                   alt="Provider Name"
+                                   class="w-full h-full object-contain">
+                            </div>
+                            <div class="md:text-base"><p>Provider Name</p></div>
+                          </div>
+                          <div class="grid gap-y-0.5 text-center leading-tight">
+                            <span class="text-sm md:text-2xl md:-tracking-[0.6px]">4.25%</span>
+                            <span class="text-[0.625rem] text-darkText4 font-normal">Per Month</span>
+                          </div>
+                          <div class="grid gap-y-0.5 text-center leading-tight">
+                              <span class="text-sm md:text-2xl md:-tracking-[0.6px]">$3,350</span>
+                              <span class="text-[0.625rem] text-darkText4 font-normal">Per Month</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-[1fr_5.5rem_5.5rem] md:grid-cols-[1fr_11rem_11rem] items-center px-1 md:pl-4 py-3 bg-primary text-white rounded-lg">
+                          <div class="grid grid-cols-[2.5rem_1fr] items-center gap-x-2">
+                            <div>
+                              <img src="src/assets/img/logo-rbc.webp"
+                                   alt="RBC"
+                                   class="w-full h-full object-contain">
+                            </div>
+                            <div class="md:text-base">
+                              <p>RBC</p>
+                              <p class="font-normal text-[0.625rem] leading-none">This is your mortgage</p>
+                            </div>
+                          </div>
+                          <div class="grid gap-y-0.5 text-center leading-tight">
+                            <span class="text-sm md:text-2xl md:-tracking-[0.6px]">4.25%</span>
+                            <span class="text-[0.625rem] text-white font-normal">Per Month</span>
+                          </div>
+                          <div class="grid gap-y-0.5 text-center leading-tight">
+                              <span class="text-sm md:text-2xl md:-tracking-[0.6px]">$3,350</span>
+                              <span class="text-[0.625rem] text-white font-normal">Per Month</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-[1fr_5.5rem_5.5rem] md:grid-cols-[1fr_11rem_11rem] items-center px-1 md:pl-4 py-3 border-b border-lightGray">
+                          <div class="grid grid-cols-[2.5rem_1fr] items-center gap-x-2">
+                            <div>
+                              <img src="src/assets/img/logo-wells-fargo.webp"
+                                   alt="Wells Fargo"
+                                   class="w-full h-full object-contain">
+                            </div>
+                            <div class="md:text-base"><p>Wells Fargo</p></div>
+                          </div>
+                          <div class="grid gap-y-0.5 text-center leading-tight">
+                            <span class="text-sm md:text-2xl md:-tracking-[0.6px]">4.00%</span>
+                            <span class="text-[0.625rem] text-darkText4 font-normal">Per Month</span>
+                          </div>
+                          <div class="grid gap-y-0.5 text-center leading-tight">
+                            <span class="text-sm md:text-2xl md:-tracking-[0.6px]">$3,000</span>
+                            <span class="text-[0.625rem] text-darkText4 font-normal">Per Month</span>
+                          </div>
+                        </div>
+                        <div class="grid grid-cols-[1fr_5.5rem_5.5rem] md:grid-cols-[1fr_11rem_11rem] items-center px-1 md:pl-4 py-3">
+                            <div class="grid grid-cols-[2.5rem_1fr] items-center gap-x-2">
+                              <div>
+                                <img src="src/assets/img/logo-cibc.webp"
+                                     alt="CIBC"
+                                     class="w-full h-full object-contain">
+                              </div>
+                              <div class="md:text-base"><p>CIBC</p></div>
+                            </div>
+                            <div class="grid gap-y-0.5 text-center leading-tight">
+                              <span class="text-sm md:text-2xl md:-tracking-[0.6px]">4.00%</span>
+                              <span class="text-[0.625rem] text-darkText4 font-normal">Per Month</span>
+                            </div>
+                            <div class="grid gap-y-0.5 text-center leading-tight">
+                                <span class="text-sm md:text-2xl md:-tracking-[0.6px]">$3,000</span>
+                                <span class="text-[0.625rem] text-darkText4 font-normal">Per Month</span>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+                <!-- Compare Mortgage Rates -->
+
+                <!-- Compare Insurance Rates -->
+                <div x-data="{ compareInsuranceRates: false, open: false }"
+                     x-init="open = window.matchMedia('(min-width: 1024px)').matches;
+                            window.addEventListener('resize', () => {
+                              open = window.matchMedia('(min-width: 1024px)').matches;
+                            });"
+                     class="swiper-slide mb-2.5 lg:mb-0 p-4 bg-white rounded-lg border border-bgGrey2">
+                  <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-semibold">Compare Insurance Rates</h3>
+                    <div class="flex items-center gap-x-1">
+                      <button @click="open = !open"
+                          :class="{ 'transform rotate-180': open }"
+                          class="w-6 h-6 flex lg:hidden items-center justify-center rounded-full bg-lightGray bg-[url('src/assets/icons/accordion-arrow.svg')] bg-center bg-no-repeat transition duration-200"></button>
+                    </div>
+                  </div>
+
+                  <div x-show="open"
+                        x-cloak
+                        class="mt-6"
+                    >
+                        <div class="bg-lightGray rounded">
+                          <div class="grid grid-cols-[1fr_7rem] px-4 py-2.5 text-sm text-darkText4 font-semibold -tracking-[0.36px]">
+                            <span>Provider</span>
+                            <span class="text-center">Payment</span>
+                          </div>
+                        </div>
+                        <div class="text-darkText font-semibold -tracking-[0.48px]">
+                          <div class="grid grid-cols-[1fr_7rem] md:grid-cols-[1fr_8rem] items-center px-4 py-3 border-b border-lightGray">
+                            <div class="grid grid-cols-[2.5rem_1fr] items-center gap-x-2">
+                              <div>
+                                <img src="src/assets/img/logo-sonnet.webp"
+                                     alt="Sonnet"
+                                     class="w-full h-full object-contain">
+                              </div>
+                              <p>Sonnet</p>
+                            </div>
+                            <div class="grid gap-y-0.5 text-center leading-tight">
+                              <span class="text-xl md:text-2xl">$150</span>
+                              <span class="text-[0.625rem] text-darkText4 font-normal">Per Month</span>
+                            </div>
+                          </div>
+                          <div class="grid grid-cols-[1fr_7rem] md:grid-cols-[1fr_8rem] items-center px-4 py-3 border-b border-lightGray">
+                            <div class="grid grid-cols-[2.5rem_1fr] items-center gap-x-2">
+                              <div>
+                                <img src="src/assets/img/logo-aviva.webp"
+                                     alt="Aviva"
+                                     class="w-full h-full object-contain">
+                              </div>
+                              <p>Aviva</p>
+                            </div>
+                            <div class="grid gap-y-0.5 text-center leading-tight">
+                              <span class="text-xl md:text-2xl">$175</span>
+                              <span class="text-[0.625rem] text-darkText4 font-normal">Per Month</span>
+                            </div>
+                          </div>
+                          <div class="grid grid-cols-[1fr_7rem] md:grid-cols-[1fr_8rem] items-center px-4 py-3 border-b border-lightGray">
+                            <div class="grid grid-cols-[2.5rem_1fr] items-center gap-x-2">
+                                <div>
+                                  <img src="src/assets/img/logo-manulife.webp"
+                                       alt="Manulife"
+                                       class="w-full h-full object-contain">
+                                </div>
+                                <p>Manulife</p>
+                              </div>
+                            <div class="grid gap-y-0.5 text-center leading-tight">
+                              <span class="text-xl md:text-2xl">$220</span>
+                              <span class="text-[0.625rem] text-darkText4 font-normal">Per Month</span>
+                            </div>
+                          </div>
+                          <div class="grid grid-cols-[1fr_7rem] md:grid-cols-[1fr_8rem] items-center px-4 py-3">
+                            <div class="grid grid-cols-[2.5rem_1fr] items-center gap-x-2">
+                              <div>
+                                <img src="src/assets/img/logo-cibc.webp"
+                                     alt="CIBC"
+                                     class="w-full h-full object-contain">
+                              </div>
+                              <p>CIBC</p>
+                            </div>
+                            <div class="grid gap-y-0.5 text-center leading-tight">
+                              <span class="text-xl md:text-2xl">$260</span>
+                              <span class="text-[0.625rem] text-darkText4 font-normal">Per Month</span>
+                            </div>
+                          </div>
+                          <div class="relative h-16 flex items-center justify-center px-1 py-3 text-white rounded-lg bg-[url('src/assets/icons/upload-bg-img.svg')] bg-primary bg-no-repeat bg-right-top">
+                              <input type="file" class="absolute inset-0 opacity-0 cursor-pointer">
+                              <p class="pr-7 text-base text-center text-white bg-[url('src/assets/icons/upload.svg')] bg-no-repeat bg-[right_center]">Upload - Insurance Document</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Compare Insurance Rates -->
+              </div>
+              <div class="hidden lg:flex lg:justify-center lg:mt-7.5 lg:gap-x-2.5">
+                <div class="manage-finances-prev manage-finances-button"></div>
+                <div class="manage-finances-next manage-finances-button"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Manage Finances section -->
+
+        <!-- Mortgage Management section -->
+        <section>
+          <div class="container">
+            <div class="pt-12 border-t border-greyscaleGray2">
+              <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl lg:text-[2rem] font-semibold -tracking-[0.72px] text-darkText">Mortgage Management</h2>
+                <div class="relative flex">
+                  <button @click="manageFinancesMenu = !manageFinancesMenu;"
+                          class="w-8 h-8 rounded-full bg-[url('/src/assets/icons/ellipsis.svg')] bg-no-repeat bg-[length:20px_20px] bg-center hover:bg-greyscaleGray2"
+                          :class="{ 'bg-greyscaleGray2': manageFinancesMenu }"
+                  ></button>
+                  <!-- Dropdown menu -->
+                  <div x-show="manageFinancesMenu"
+                         @click.away="manageFinancesMenu = false"
+                         class="absolute right-0 top-full mt-1 w-52 bg-white rounded-lg border border-bgGrey2 shadow-custom z-10"
+                         x-cloak
+                    >
+                    <div class="py-2 space-y-2">
+                      <a href="#"
+                         class="flex items-center gap-x-2 px-2.5 py-1 text-bade text-darkText3 transition duration-200 hover:bg-lightGray">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
+                             viewBox="0 0 20 20">
+                          <path fill="currentColor" stroke="currentColor"
+                                d="M10 2.5c4.135 0 7.5 3.365 7.5 7.5s-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5S5.865 2.5 10 2.5ZM10 5a1.5 1.5 0 0 0-1.5 1.5v2h-2a1.5 1.5 0 0 0 0 3h2v2a1.5 1.5 0 0 0 3 0v-2h2a1.5 1.5 0 0 0 0-3h-2v-2A1.5 1.5 0 0 0 10 5Z"/>
+                        </svg>
+                        <span class="text-darkText font-medium">Add info</span>
+                      </a>
+                      <a href="#"
+                         class="flex items-center gap-x-2 px-2.5 py-1 text-bade text-darkText3 transition duration-200 hover:bg-lightGray">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
+                             viewBox="0 0 20 20">
+                          <g fill="currentColor" clip-path="url(#a)">
+                              <path d="m17.098 8.667 1.146-1.147a4.045 4.045 0 0 0 1.194-2.882 4.048 4.048 0 0 0-1.194-2.881c-1.538-1.54-4.223-1.54-5.761 0l-1.147 1.146 5.762 5.764ZM9.568 4.672l-6.48 6.48a4.164 4.164 0 0 0-1.08 1.873L.573 18.41a.832.832 0 0 0 1.02 1.018l5.385-1.434a4.164 4.164 0 0 0 1.874-1.08l6.48-6.48-5.764-5.762Z"/>
+                          </g>
+                          <defs>
+                            <clipPath id="a">
+                              <path fill="#fff" d="M0 0h20v20H0z"/>
+                            </clipPath>
+                          </defs>
+                        </svg>
+                        <span class="text-darkText font-medium">Edit</span>
+                      </a>
+                      <a href="#"
+                         class="flex items-center gap-x-2 px-2.5 py-1 text-bade text-darkText3 transition duration-200 hover:bg-lightGray">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
+                             viewBox="0 0 20 20">
+                          <path fill="currentColor"
+                                d="M10 2c-4.411 0-8 3.589-8 8s3.589 8 8 8 8-3.589 8-8-3.589-8-8-8Zm1 12a1 1 0 1 1-2 0V9.5a1 1 0 1 1 2 0V14Zm-1-6.5c-.689 0-1.25-.561-1.25-1.25S9.311 5 10 5s1.25.561 1.25 1.25S10.689 7.5 10 7.5Z"/>
+                        </svg>
+                        <span class="text-darkText font-medium">View Details</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper mortgage-management pb-12 -mx-4 md:-mx-8 lg:mx-0 px-4 md:px-8 lg:px-0">
+              <div class="swiper-wrapper lg:grid lg:grid-cols-4 lg:gap-2.5">
+                <div class="swiper-slide w-[19.5rem] lg:w-full flex flex-col px-2.5 xl:px-5 bg-lightGray rounded-lg">
+                  <div class="min-h-[5.625rem] lg:min-h-[16.5rem] grow grid grid-cols-[1fr_5.25rem] lg:grid-cols-1 py-3.5 lg:pt-6 lg:gap-y-5 border-b border-bgGray2">
+                    <h3 class="text-xl lg:text-2xl font-semibold -tracking-[0.6px] leading-tight lg:order-1">Connect with RBC Mortgage</h3>
+                    <div class="flex justify-center lg:max-w-44">
+                      <img
+                        src="src/assets/img/logo-rbc-big.webp"
+                        alt="RBC"
+                        class="w-full h-full object-contain"
+                      >
+                    </div>
+                  </div>
+                  <a href="#" class="flex justify-between text-sm font-semibold py-2.5 lg:py-5 bg-[url('src/assets/icons/arrow-prev.svg')] bg-no-repeat bg-[right_center]">Learn More</a>
+                </div>
+                <div class="swiper-slide w-[19.5rem] lg:w-full flex flex-col px-2.5 xl:px-5 bg-lightGray bg-[url('src/assets/img/logo-grey-bg.svg')] bg-no-repeat bg-[right_top_-2.5rem] lg:bg-[left_-3.125rem_top] lg:bg-[length:11rem_14rem] rounded-lg">
+                  <div class="min-h-[5.625rem] lg:min-h-[16.5rem] grow py-3.5 lg:pt-11 border-b border-bgGray2">
+                    <div class="max-w-48 flex lg:flex-col gap-x-2 items-center lg:items-start">
+                      <strong class="text-[2.625rem] lg:text-[4rem] leading-none">3</strong>
+                      <h3 class="text-base lg:text-2xl font-semibold -tracking-[0.6px] leading-tight">Mortgage Opportunities</h3>
+                    </div>
+                  </div>
+                  <a href="#" class="flex justify-between text-sm font-semibold py-2.5 lg:py-5 bg-[url('src/assets/icons/arrow-prev.svg')] bg-no-repeat bg-[right_center]">Learn More</a>
+                </div>
+                <div class="swiper-slide w-[19.5rem] lg:w-full flex flex-col px-2.5 xl:px-5 bg-lightGray bg-[url('src/assets/img/logo-grey-bg.svg')] bg-no-repeat bg-[right_top_-2.5rem] lg:bg-[left_-3.125rem_top] lg:bg-[length:11rem_14rem] rounded-lg">
+                  <div class="min-h-[5.625rem] lg:min-h-[16.5rem] grow py-3.5 lg:pt-11 border-b border-bgGray2">
+                    <div class="max-w-60 flex lg:flex-col gap-x-2 items-center lg:items-start">
+                      <strong class="text-[2.625rem] lg:text-[4rem] leading-none">22</strong>
+                      <h3 class="text-base lg:text-2xl font-semibold -tracking-[0.6px] leading-tight">Mortgage Lenders. Compare Your Mortgage</h3>
+                    </div>
+                  </div>
+                  <a href="#" class="flex justify-between text-sm font-semibold py-2.5 lg:py-5 bg-[url('src/assets/icons/arrow-prev.svg')] bg-no-repeat bg-[right_center]">Learn More</a>
+                </div>
+                <div class="swiper-slide w-[19.5rem] lg:w-full flex flex-col px-2.5 xl:px-5 bg-lightGray rounded-lg">
+                  <div class="min-h-[5.625rem] lg:min-h-[16.5rem] grow py-3.5 border-b border-bgGray2">
+                    <div class="max-w-60 lg:h-full flex lg:flex-col gap-x-2 items-center lg:justify-center">
+                      <img src="src/assets/icons/mortgage-lenders-icon.svg" alt="Mortgage Lenders" class="lg:w-16">
+                      <h3 class="text-xl lg:text-2xl font-semibold -tracking-[0.6px] leading-tight">Mortgage News</h3>
+                    </div>
+                  </div>
+                  <a href="#" class="flex justify-between text-sm font-semibold py-2.5 lg:py-5 bg-[url('src/assets/icons/arrow-prev.svg')] bg-no-repeat bg-[right_center]">Learn More</a>
+                </div>
+                <div class="swiper-slide w-[19.5rem] lg:w-full lg:order-2 flex flex-col px-2.5 xl:px-5 bg-primary text-white bg-[url('src/assets/icons/logo-small-darker.svg')] bg-no-repeat bg-[right_top_-2.5rem] lg:bg-[center_top_2.5rem] lg:bg-[length:4rem_5.25rem] rounded-lg">
+                  <div class="min-h-[5.625rem] lg:min-h-[16.5rem] grow py-3.5 lg:pt-[8.125rem] border-b border-white/20 lg:text-center">
+                    <h3 class="mb-1 text-xl lg:text-2xl text-white font-semibold -tracking-[0.6px] leading-tight">Upload Mortgage Documents</h3>
+                    <p class="text-sm leading-[1.4]">You will be able to get detailed mortgage information on one place</p>
+                  </div>
+                  <div class="relative flex justify-between items-center text-sm font-semibold py-2.5 lg:py-5 after:w-6 lg:after:w-5 after:h-6 lg:after:h-5 after:bg-[url('src/assets/icons/upload.svg')] after:bg-no-repeat">
+                    Upload documents
+                    <input type="file" class="absolute inset-0 opacity-0 cursor-pointer">
+                  </div>
+                </div>
+                <div class="swiper-slide w-[19.5rem] lg:w-full lg:order-1 flex flex-col px-2.5 xl:px-5 bg-secondary text-white rounded-lg">
+                  <div class="min-h-[5.625rem] lg:min-h-[16.5rem] grow flex lg:flex-col justify-between lg:justify-center items-start lg:items-center grow py-3.5 border-b border-white/20">
+                    <h3 class="lg:order-1 max-w-40 lg:max-w-none mt-5 text-xl lg:text-2xl text-white font-semibold -tracking-[0.6px] leading-tight">Mortgage Calculator</h3>
+                    <picture class="mt-2 mr-2 lg:m-0">
+                      <source srcset="src/assets/icons/calc-desktop.svg" media="(min-width: 1024px)" />
+                      <img class="" src="src/assets/icons/calc.svg" alt="Mortgage Calculator">
+                    </picture>
+                  </div>
+                  <a href="#" class="flex justify-between text-sm font-semibold py-2.5 lg:py-5 bg-[url('src/assets/icons/arrow-prev-white.svg')] bg-no-repeat bg-[right_center]">Open Mortgage Calculator</a>
+                </div>
+                <div class="swiper-slide w-[19.5rem] lg:w-full relative flex flex-col px-2.5 xl:px-5 bg-lightGray text-white bg-[url('src/assets/img/get-a-new-qoute.webp')] bg-no-repeat bg-cover rounded-lg z-10 overflow-hidden after:absolute after:inset-0 after:bg-[linear-gradient(180deg,_rgb(31_31_31_/0)_0%,_#1F1F1F_100%)] after:-z-10">
+                  <div class="min-h-[5.625rem] lg:min-h-[16.5rem] grow flex items-end py-3.5 border-b border-white/20">
+                    <h3 class="text-xl text-white font-semibold -tracking-[0.6px] leading-tight">Get a New Qoute</h3>
+                  </div>
+                  <a href="#" class="flex justify-between text-sm font-semibold py-2.5 lg:py-5 bg-[url('src/assets/icons/arrow-prev-white.svg')] bg-no-repeat bg-[right_center]">Learn More</a>
+                </div>
+                <div class="swiper-slide w-[19.5rem] lg:w-full lg:order-3 flex flex-col px-2.5 xl:px-5 bg-secondary text-white bg-[url('src/assets/icons/logo-small-blue.svg')] bg-no-repeat bg-[right_top_-2.5rem] lg:bg-[left_-3.125rem_top] lg:bg-[length:11rem_14rem]  rounded-lg">
+                    <div class="lg:relative min-h-[5.625rem] lg:min-h-[16.5rem] grow flex justify-between items-start grow py-3.5 border-b border-white/20">
+                      <h3 class="max-w-40 lg:max-w-none mt-5 lg:mt-11 lg:grid xl:gap-y-2 text-xl lg:text-2xl text-white font-semibold -tracking-[0.6px] leading-tight">
+                        <span class="lg:text-[2.5rem] xl:text-[4rem] lg:uppercase lg:-tracking-[1.92px]">Top</span> Mortgage Agents
+                      </h3>
+                      <img class="lg:absolute lg:top-[2.725rem] xl:top-12 lg:right-0 max-w-[7.875rem] object-contain" src="src/assets/img/experts.webp" alt="Experts">
+                    </div>
+                    <a href="#" class="flex justify-between text-sm font-semibold py-2.5 lg:py-5 bg-[url('src/assets/icons/arrow-prev-white.svg')] bg-no-repeat bg-[right_center]">Connect with Top Agents</a>
+                  </div>
+              </div>
+              <div class="static flex lg:hidden mt-6 justify-center gap-x-2 swiper-pagination"></div>
+            </div>
+          </div>
+        </section>
+        <!-- Mortgage Management section -->
+      </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
